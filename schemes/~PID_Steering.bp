@@ -1,0 +1,153 @@
+lv_speed_6 = 0
+lv_degrees_6 = 0
+lv_trackwall_6 = 0
+lv_stop_6 = 0
+lv_speed_5 = 0
+lv_trackwall_5 = 0
+lv_value1_4 = 0
+lv_value2_4 = 0
+lv_kp_4 = 0
+lv_ki_4 = 0
+lv_kd_4 = 0
+lv_correction_4 = 0
+lv_steeringpower_5 = 0
+gv_relativeheading = 0
+gv_leftwall = 0
+gv_rightwall = 0
+gv_lasterror = 0
+gv_intergal = 0
+gv_derivative = 0
+gv_target = 0
+gv_cw = 0
+gv_loopcount = 0
+gv_i = 0
+Sensor.SetMode ( 2 , 0 )
+Sensor.SetMode ( 3 , 0 )
+Sensor.SetMode ( 4 , 0 )
+gv_relativeheading = 0
+gv_leftwall = 0
+gv_rightwall = 0
+Thread.Run = f_readsensor_0
+gv_lasterror = 0
+gv_intergal = 0
+gv_derivative = 0
+f_resetsteering_0 ()
+gv_target = 0
+gv_cw = 0
+gv_loopcount = 0
+lv_speed_6 = 50
+lv_degrees_6 = 300
+lv_trackwall_6 = 0
+lv_stop_6 = 0
+f_drivedegrees_4 ()
+Speaker.Tone ( 100 , 400 , 50 )
+While gv_leftwall < 1500 And gv_rightwall < 1500
+lv_speed_5 = 50
+lv_trackwall_5 = 0
+f_drive_2 ()
+EndWhile
+Speaker.Tone ( 100 , 1000 , 50 )
+If gv_rightwall > 2000 Then
+gv_cw = 1
+Else
+gv_cw = - 1
+EndIf
+For gv_i = 1 To 11
+gv_target = gv_target + 90 * gv_cw
+lv_speed_6 = 50
+lv_degrees_6 = 1000
+lv_trackwall_6 = 1
+lv_stop_6 = 0
+f_drivedegrees_4 ()
+Speaker.Tone ( 100 , 400 , 50 )
+If gv_cw = 1 Then
+While gv_rightwall < 1000
+lv_speed_5 = 50
+lv_trackwall_5 = 0
+f_drive_2 ()
+EndWhile
+Else
+While gv_leftwall < 1000
+lv_speed_5 = 50
+lv_trackwall_5 = 0
+f_drive_2 ()
+EndWhile
+EndIf
+Speaker.Tone ( 100 , 1000 , 50 )
+EndFor
+gv_target = gv_target + 90 * gv_cw
+lv_speed_6 = 50
+lv_degrees_6 = 800
+lv_trackwall_6 = 1
+lv_stop_6 = 1
+f_drivedegrees_4 ()
+Sub f_readsensor_0
+While "True"
+gv_relativeheading = ( Sensor.ReadRawValue ( 2 , 0 ) - gv_target ) * 3
+gv_leftwall = Sensor.ReadRawValue ( 3 , 0 )
+gv_rightwall = Sensor.ReadRawValue ( 4 , 0 )
+EndWhile
+EndSub
+Sub f_resetsteering_0
+Motor.StartPower ( "A" , - 80 )
+Program.Delay ( 450 )
+While Motor.GetSpeed ( "A" ) <> 0
+EndWhile
+Motor.ResetCount ( "A" )
+EndSub
+Sub f_pid_6
+lv_error_4 = lv_value1_4 - lv_value2_4
+lv_p_4 = lv_error_4 * lv_kp_4
+If lv_error_4 = 0 Then
+gv_intergal = 0
+Else
+gv_intergal = gv_intergal + lv_error_4
+EndIf
+If gv_intergal > 5 Then
+gv_intergal = 5
+EndIf
+If gv_intergal < - 5 Then
+gv_intergal = - 5
+EndIf
+lv_i_4 = gv_intergal * lv_ki_4
+lv_d_4 = ( lv_error_4 - gv_lasterror ) * lv_kd_4
+gv_lasterror = lv_error_4
+lv_correction_4 = lv_p_4 + lv_i_4 + lv_d_4
+EndSub
+Sub f_drive_2
+If Math.Abs ( gv_relativeheading ) < 30 And lv_trackwall_5 = 1 Then
+If gv_cw = 1 Then
+lv_wallturn_5 = ( 150 - gv_rightwall ) * 1
+Else
+lv_wallturn_5 = ( gv_leftwall - 150 ) * 1
+EndIf
+If lv_wallturn_5 > 40 Then
+lv_wallturn_5 = 40
+EndIf
+If lv_wallturn_5 < - 40 Then
+lv_wallturn_5 = - 40
+EndIf
+EndIf
+lv_turn_5 = gv_relativeheading + lv_wallturn_5
+lv_error_5 = 47 + lv_turn_5
+lv_value1_4 = lv_error_5
+lv_value2_4 = Motor.GetCount ( "A" )
+lv_kp_4 = 5
+lv_ki_4 = 0.1
+lv_kd_4 = 5
+f_pid_6 ()
+lv_steeringpower_5 = lv_correction_4
+Motor.StartPower ( "A" , lv_steeringpower_5 )
+Motor.StartPower ( "D" , lv_speed_5 )
+EndSub
+Sub f_drivedegrees_4
+Motor.ResetCount ( "D" )
+While Motor.GetCount ( "D" ) < lv_degrees_6
+lv_speed_5 = lv_speed_6
+lv_trackwall_5 = lv_trackwall_6
+f_drive_2 ()
+EndWhile
+If lv_stop_6 = 1 Then
+Motor.Stop ( "D" , "True" )
+EndIf
+EndSub

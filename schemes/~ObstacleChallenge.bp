@@ -1,0 +1,488 @@
+lv_port_4 = 0
+lv_chanel_4 = 0
+lv_mode_4 = 0
+lv_port_2 = 0
+lv_port_1 = 0
+lv_speed_7 = 0
+lv_degrees_7 = 0
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 0
+lv_stop_9 = 0
+lv_speed_6 = 0
+lv_trackwall_6 = 0
+lv_trackpillar_6 = 0
+lv_steering_8 = 0
+lv_speed_8 = 0
+lv_degrees_8 = 0
+lv_stop_8 = 0
+lv_port_3 = 0
+lv_sig_3 = 0
+lv_x_3 = 0
+lv_y_3 = 0
+lv_port_5 = 0
+lv_chanel_5 = 0
+lv_values_5 = 0
+gv_greenx = 0
+gv_greeny = 0
+gv_redx = 0
+gv_redy = 0
+gv_pinkx = 0
+gv_pinky = 0
+gv_leftwall = 0
+gv_rightwall = 0
+gv_lasterror = 0
+gv_lastpillar = 0
+gv_steeringlasterror = 0
+gv_walldistance = 0
+gv_followwalllogic = 0
+gv_target = 0
+gv_cw = 0
+gv_loopcount = 0
+gv_degrees = 0
+Sensor.SetMode ( 2 , 0 )
+Sensor.SetMode ( 4 , 2 )
+lv_port_4 = 3
+lv_chanel_4 = 1
+lv_mode_4 = 0
+f_setmultiplexermode_3 ()
+lv_port_4 = 3
+lv_chanel_4 = 2
+lv_mode_4 = 0
+f_setmultiplexermode_3 ()
+Thread.Run = f_readsensor_0
+gv_lasterror = 0
+gv_lastpillar = 0
+gv_steeringlasterror = 0
+gv_walldistance = 450
+gv_followwalllogic = 1
+lv_port_2 = 1
+f_setlampoff_1 ()
+f_resetsteering_0 ()
+lv_port_1 = 1
+f_setlampon_1 ()
+If gv_leftwall > gv_rightwall Then
+Speaker.Tone ( 100 , 600 , 25 )
+gv_target = - 90.5
+gv_cw = - 1
+Else
+Speaker.Tone ( 100 , 300 , 25 )
+gv_target = 90.5
+gv_cw = 1
+EndIf
+lv_speed_7 = - 40
+lv_degrees_7 = 100
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 0
+f_waitdegrees_5 ()
+lv_stop_9 = 1
+f_brake_1 ()
+lv_speed_7 = 40
+lv_degrees_7 = 240
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 0
+f_waitdegrees_5 ()
+gv_target = 0
+If gv_cw = 1 Then
+While Sensor.ReadRawValue ( 4 , 0 ) <> 4 And Sensor.ReadRawValue ( 4 , 0 ) <> 5
+lv_speed_6 = 55
+lv_trackwall_6 = 1
+lv_trackpillar_6 = 1
+f_drive_3 ()
+EndWhile
+Else
+While Sensor.ReadRawValue ( 4 , 0 ) <> 2
+lv_speed_6 = 55
+lv_trackwall_6 = 1
+lv_trackpillar_6 = 1
+f_drive_3 ()
+EndWhile
+EndIf
+Speaker.Tone ( 100 , 600 , 25 )
+lv_port_1 = 1
+f_setlampon_1 ()
+For gv_loopcount = 1 To 12
+If gv_cw = 1 Then
+If gv_loopcount < 8 Then
+gv_target = gv_target + 89.25 * gv_cw
+Else
+gv_target = gv_target + 90.50 * gv_cw
+EndIf
+Else
+If gv_loopcount < 8 Then
+gv_target = gv_target + 88.25 * gv_cw
+Else
+gv_target = gv_target + 89.50 * gv_cw
+EndIf
+EndIf
+lv_speed_7 = 55
+lv_degrees_7 = 100
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 1
+lv_stop_7 = 0
+f_waitdegrees_5 ()
+lv_speed_7 = 45
+lv_degrees_7 = 400
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 1
+lv_stop_7 = 0
+f_waitdegrees_5 ()
+If gv_cw = 1 Then
+If gv_lastpillar = 1 Then
+gv_degrees = 1100
+Else
+gv_degrees = 800
+EndIf
+Else
+If gv_lastpillar = 2 Then
+gv_degrees = 1100
+Else
+gv_degrees = 800
+EndIf
+EndIf
+lv_speed_7 = 55
+lv_degrees_7 = gv_degrees
+lv_trackwall_7 = 1
+lv_trackpillar_7 = 1
+lv_stop_7 = 0
+f_waitdegrees_5 ()
+Speaker.Tone ( 100 , 1500 , 25 )
+If gv_cw = 1 Then
+While Sensor.ReadRawValue ( 4 , 0 ) <> 4 And Sensor.ReadRawValue ( 4 , 0 ) <> 5
+lv_speed_6 = 50
+lv_trackwall_6 = 1
+lv_trackpillar_6 = 1
+f_drive_3 ()
+EndWhile
+Else
+While Sensor.ReadRawValue ( 4 , 0 ) <> 2
+lv_speed_6 = 50
+lv_trackwall_6 = 1
+lv_trackpillar_6 = 1
+f_drive_3 ()
+EndWhile
+EndIf
+Speaker.Tone ( 100 , 600 , 25 )
+EndFor
+gv_followwalllogic = 0
+If gv_cw = 1 Then
+gv_target = gv_target - 60 * gv_cw
+Else
+gv_target = gv_target - 70 * gv_cw
+EndIf
+Time.Reset5 ()
+While Time.Get5 () < 2000
+lv_speed_6 = 100
+lv_trackwall_6 = 0
+lv_trackpillar_6 = 0
+f_drive_3 ()
+EndWhile
+lv_stop_9 = 1
+f_brake_1 ()
+Program.Delay ( 1000 )
+Speaker.Tone ( 100 , 500 , 100 )
+If gv_cw = 1 Then
+gv_target = gv_target - 30 * gv_cw
+lv_speed_7 = - 30
+lv_degrees_7 = 500
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 1
+f_waitdegrees_5 ()
+Else
+gv_target = gv_target - 25 * gv_cw
+lv_speed_7 = - 30
+lv_degrees_7 = 450
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 1
+f_waitdegrees_5 ()
+EndIf
+lv_stop_9 = 1
+f_brake_1 ()
+Program.Delay ( 200 )
+If gv_cw = 1 Then
+gv_target = gv_target - 85 * gv_cw
+Else
+gv_target = gv_target - 85 * gv_cw
+EndIf
+lv_speed_7 = - 30
+lv_degrees_7 = 70
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 0
+f_waitdegrees_5 ()
+lv_stop_9 = 1
+f_brake_1 ()
+Speaker.Tone ( 100 , 220 , 50 )
+gv_cw = gv_cw * - 1
+gv_walldistance = 260
+gv_followwalllogic = 1
+lv_speed_7 = 30
+lv_degrees_7 = 400
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 0
+f_waitdegrees_5 ()
+If gv_cw = 1 Then
+gv_walldistance = 260
+lv_speed_7 = 30
+lv_degrees_7 = 700
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 0
+f_waitdegrees_5 ()
+While gv_leftwall > 200
+lv_speed_6 = 30
+lv_trackwall_6 = 0
+lv_trackpillar_6 = 0
+f_drive_3 ()
+EndWhile
+Speaker.Tone ( 100 , 2000 , 50 )
+lv_speed_7 = 30
+lv_degrees_7 = 300
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 1
+f_waitdegrees_5 ()
+lv_steering_8 = - 60
+lv_speed_8 = - 100
+lv_degrees_8 = 345
+lv_stop_8 = 1
+f_steeringdrive_4 ()
+lv_steering_8 = 55
+lv_speed_8 = - 100
+lv_degrees_8 = 390
+lv_stop_8 = 1
+f_steeringdrive_4 ()
+Speaker.Tone ( 100 , 2000 , 50 )
+f_resetsteeringtocenter_0 ()
+Program.Delay ( 500 )
+Else
+gv_walldistance = 280
+lv_speed_7 = 30
+lv_degrees_7 = 100
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 0
+f_waitdegrees_5 ()
+While gv_rightwall > 160
+lv_speed_6 = 30
+lv_trackwall_6 = 0
+lv_trackpillar_6 = 0
+f_drive_3 ()
+EndWhile
+lv_speed_7 = 30
+lv_degrees_7 = 300
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 0
+f_waitdegrees_5 ()
+While gv_rightwall > 160
+lv_speed_6 = 30
+lv_trackwall_6 = 0
+lv_trackpillar_6 = 0
+f_drive_3 ()
+EndWhile
+Speaker.Tone ( 100 , 2000 , 50 )
+lv_speed_7 = 30
+lv_degrees_7 = 250
+lv_trackwall_7 = 0
+lv_trackpillar_7 = 0
+lv_stop_7 = 1
+f_waitdegrees_5 ()
+lv_steering_8 = 60
+lv_speed_8 = - 100
+lv_degrees_8 = 340
+lv_stop_8 = 1
+f_steeringdrive_4 ()
+lv_steering_8 = - 55
+lv_speed_8 = - 100
+lv_degrees_8 = 390
+lv_stop_8 = 1
+f_steeringdrive_4 ()
+Speaker.Tone ( 100 , 2000 , 50 )
+f_resetsteeringtocenter_0 ()
+Program.Delay ( 500 )
+EndIf
+f_resetsteeringtocenter_0 ()
+Program.Delay ( 200 )
+Speaker.Tone ( 100 , 100 , 50 )
+Sub f_readsensor_0
+While "True"
+lv_port_3 = 1
+lv_sig_3 = 1
+f_getsignature_4 ()
+gv_greenx = lv_x_3
+gv_greeny = lv_y_3
+lv_port_3 = 1
+lv_sig_3 = 2
+f_getsignature_4 ()
+gv_redx = lv_x_3
+gv_redy = lv_y_3
+lv_port_3 = 1
+lv_sig_3 = 3
+f_getsignature_4 ()
+gv_pinkx = lv_x_3
+gv_pinky = lv_y_3
+gv_relativeheading = Sensor.ReadRawValue ( 2 , 0 ) - gv_target
+lv_port_5 = 3
+lv_chanel_5 = 1
+f_getmultiplexervalue_3 ()
+gv_leftwall = lv_values_5
+lv_port_5 = 3
+lv_chanel_5 = 2
+f_getmultiplexervalue_3 ()
+gv_rightwall = lv_values_5
+EndWhile
+EndSub
+Sub f_resetsteering_0
+Motor.StartPower ( "A" , - 80 )
+Program.Delay ( 50 )
+While Motor.GetSpeed ( "A" ) <> 0
+EndWhile
+Motor.ResetCount ( "A" )
+EndSub
+Sub f_setlampon_1
+Sensor.WriteI2CRegister ( lv_port_1 , 0 , 98 , 1 )
+EndSub
+Sub f_setlampoff_1
+Sensor.WriteI2CRegister ( lv_port_2 , 0 , 98 , 0 )
+EndSub
+Sub f_getsignature_4
+lv_address_3 = 80 + lv_sig_3
+lv_values_3 = Sensor.ReadI2CRegisters ( lv_port_3 , 1 , lv_address_3 , 3 )
+lv_x_3 = lv_values_3 [ 1 ]
+lv_y_3 = lv_values_3 [ 2 ]
+EndSub
+Sub f_setmultiplexermode_3
+lv_address_4 = 80 + 1 * ( lv_chanel_4 - 1 )
+Sensor.WriteI2CRegister ( lv_port_4 , lv_address_4 , 82 , lv_mode_4 )
+EndSub
+Sub f_getmultiplexervalue_3
+lv_address_5 = 80 + 1 * ( lv_chanel_5 - 1 )
+lv_readdata_5 = Sensor.ReadI2CRegisters ( lv_port_5 , lv_address_5 , 84 , 2 )
+lv_values_5 = lv_readdata_5 [ 1 ] * 256 + lv_readdata_5 [ 0 ]
+EndSub
+Sub f_drive_3
+If Sensor.ReadRawValue ( 4 , 0 ) = 0 Or gv_leftwall = 0 Or gv_rightwall = 0 Then
+lv_runspeed_6 = 0
+Else
+lv_runspeed_6 = lv_speed_6
+EndIf
+If ( gv_leftwall < 250 Or gv_rightwall < 250 ) And lv_trackwall_6 = 1 Then
+If gv_leftwall < 250 Then
+lv_steeringturn_6 = - 27
+Else
+lv_steeringturn_6 = 27
+EndIf
+Else
+lv_greendis_6 = Math.SquareRoot ( Math.Power ( gv_greenx - 130 , 2 ) + Math.Power ( 255 - gv_greeny , 2 ) )
+lv_reddis_6 = Math.SquareRoot ( Math.Power ( gv_redx - 130 , 2 ) + Math.Power ( 255 - gv_redy , 2 ) )
+lv_pinkdis_6 = Math.SquareRoot ( Math.Power ( gv_pinkx - 130 , 2 ) + Math.Power ( 255 - gv_pinky , 2 ) )
+If ( lv_greendis_6 < 250 Or lv_reddis_6 < 250 Or lv_pinkdis_6 < 150 ) And lv_trackpillar_6 = 1 Then
+If lv_greendis_6 < lv_reddis_6 And lv_greendis_6 < lv_pinkdis_6 Then
+gv_lastpillar = 1
+EV3.SetLEDColor ( "GREEN" , "NORMAL" )
+If gv_greeny > 115 Then
+lv_steeringturn_6 = ( 250 - gv_greenx ) * gv_greeny / 100 * 0.50
+Else
+lv_steeringturn_6 = ( 150 - gv_greenx ) * gv_greeny / 100 * 0.50
+EndIf
+ElseIf lv_reddis_6 < lv_greendis_6 And lv_reddis_6 < lv_pinkdis_6 Then
+gv_lastpillar = 2
+EV3.SetLEDColor ( "RED" , "NORMAL" )
+If gv_redy > 125 Then
+lv_steeringturn_6 = ( 5 - gv_redx ) * gv_redy / 100 * 0.50
+Else
+lv_steeringturn_6 = ( 100 - gv_redx ) * gv_redy / 100 * 0.50
+EndIf
+Else
+EV3.SetLEDColor ( "ORANGE" , "NORMAL" )
+If gv_pinkx > 0 And gv_pinkx < 50 And gv_pinky > 100 And gv_cw = 1 And gv_loopcount < 13 Or gv_pinkx > 200 And gv_pinky > 100 And gv_cw = - 1 And gv_loopcount < 13 Or gv_pinky > 80 And gv_pinkx > 50 And gv_pinkx < 200 And gv_loopcount < 13 Then
+lv_steeringturn_6 = - 35 * gv_cw
+EndIf
+Speaker.Tone ( 100 , 660 , 50 )
+EndIf
+Else
+EV3.SetLEDColor ( "OFF" , "NORMAL" )
+If gv_leftwall > 2550 Or gv_leftwall < 0 Or gv_rightwall > 2550 Or gv_leftwall < 0 Then
+lv_followwall_6 = 0
+ElseIf gv_cw = 1 And Math.Abs ( gv_relativeheading ) < 15 Then
+lv_followwall_6 = ( gv_leftwall - gv_walldistance ) * 0.3
+ElseIf gv_cw = - 1 And Math.Abs ( gv_relativeheading ) < 15 Then
+lv_followwall_6 = ( gv_rightwall - gv_walldistance ) * - 0.3
+Else
+lv_followwall_6 = 0
+EndIf
+If Math.Abs ( gv_relativeheading ) > 10 Then
+lv_gyroerr_6 = gv_relativeheading + ( lv_followwall_6 * 0.9 )
+Else
+lv_gyroerr_6 = 0 + ( lv_followwall_6 * 0.9 )
+EndIf
+lv_steeringturn_6 = lv_gyroerr_6 * 1.5 + ( lv_gyroerr_6 - gv_lasterror ) * 1.2 * ( lv_speed_6 / Math.Abs ( lv_speed_6 ) )
+If Time.Get1 () > 15 Then
+gv_lasterror = lv_gyroerr_6
+Time.Reset1 ()
+EndIf
+EndIf
+EndIf
+lv_steeringerror_6 = ( 43 - Motor.GetCount ( "A" ) ) + lv_steeringturn_6 * ( Math.Abs ( lv_speed_6 + 1 ) - Math.Abs ( lv_speed_6 ) )
+lv_steeringcorrection_6 = lv_steeringerror_6 * 0.85 + ( lv_steeringerror_6 - gv_steeringlasterror ) * 2
+If Time.Get2 () > 15 Then
+gv_steeringlasterror = lv_steeringerror_6
+Time.Reset2 ()
+EndIf
+Motor.StartPower ( "A" , lv_steeringcorrection_6 )
+Motor.Start ( "D" , lv_runspeed_6 )
+EndSub
+Sub f_waitdegrees_5
+Motor.ResetCount ( "D" )
+While Math.Abs ( Motor.GetCount ( "D" ) ) < lv_degrees_7
+lv_speed_6 = lv_speed_7
+lv_trackwall_6 = lv_trackwall_7
+lv_trackpillar_6 = lv_trackpillar_7
+f_drive_3 ()
+EndWhile
+If lv_stop_7 = 1 Then
+Motor.Stop ( "D" , "True" )
+Program.Delay ( 100 )
+EndIf
+EndSub
+Sub f_steeringdrive_4
+Motor.ResetCount ( "D" )
+While Math.Abs ( Motor.GetCount ( "D" ) ) < lv_degrees_8
+If Sensor.ReadRawValue ( 4 , 0 ) = 0 Or gv_leftwall = 0 Or gv_rightwall = 0 Then
+lv_runspeed_8 = 0
+Else
+lv_runspeed_8 = lv_speed_8
+EndIf
+lv_steeringpower_8 = ( 43 - Motor.GetCount ( "A" ) + lv_steering_8 )
+Motor.StartPower ( "A" , lv_steeringpower_8 * ( Math.Abs ( lv_speed_8 + 1 ) - Math.Abs ( lv_speed_8 ) ) )
+Motor.Start ( "D" , lv_speed_8 )
+EndWhile
+If lv_stop_8 = 1 Then
+Motor.Stop ( "D" , "True" )
+Program.Delay ( 50 )
+EndIf
+EndSub
+Sub f_brake_1
+If lv_stop_9 = 1 Then
+Motor.Stop ( "D" , "True" )
+Motor.Stop ( "A" , "True" )
+Program.Delay ( 50 )
+EndIf
+EndSub
+Sub f_resetsteeringtocenter_0
+Motor.StartPower ( "A" , - 50 )
+Program.Delay ( 50 )
+While Motor.GetSpeed ( "A" ) <> 0
+EndWhile
+Motor.ResetCount ( "A" )
+Motor.StartPower ( "A" , 50 )
+While Motor.GetCount ( "A" ) < 42
+EndWhile
+Motor.Stop ( "A" , "True" )
+EndSub
