@@ -24,7 +24,7 @@ image
 # Performance video
 This video provides an overview of our self-driving car’s design, demonstrates its performance in both the Open Challenge and the Obstacle Challenge, and explains how it operates in each scenario. Scan the QR code below to watch the video for both challenges.
 
-Please click the link https://youtu.be/rjCbvZdWhEg  or scan the QR code to watch the video and explore our project in action.
+Please click the link (https://drive.google.com/file/d/18GrwdV6JntD4dnHnbf9u1oeJ7yk-v8FS/view?usp=sharing)  or scan the QR code to watch the video and explore our project in action.
 
 
 image
