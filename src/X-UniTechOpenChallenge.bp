@@ -1,0 +1,165 @@
+folder "prjs" "NRC"
+Speaker.Tone(100,440,50)
+
+Function setMultiplexerMode(in number port, in number channel, in number mode)
+  address = 80 + 1 * (channel - 1)
+  Sensor.WriteI2CRegister(port, address, 82, mode)
+EndFunction
+
+Function getMultiplexerValues(in number port, in number channel, out number values)
+  address = 80 + 1 * (channel - 1)
+  readData = Sensor.ReadI2CRegisters(port, address, 84, 2)
+  values = readData[1] * 256 + readData[0]
+EndFunction
+
+Sensor.SetMode(2,0)
+Sensor.SetMode(4,2)
+setMultiplexerMode(3,1,0)
+setMultiplexerMode(3,3,0)
+
+Sub ReadSensor
+  While "True"
+    relativeHeading = Sensor.ReadRawValue(2,0)-target
+    getMultiplexerValues(3,1,leftWall)
+    getMultiplexerValues(3,3,rightWall)
+    LCD.Clear()
+    LCD.Text(1,0,0,2,leftWall)
+    LCD.Text(1,0,20,2,rightWall)
+  EndWhile
+EndSub
+
+Thread.Run = ReadSensor
+
+Sub ResetSteering
+  Motor.StartPower("A",-100)
+  Program.Delay(300)
+  While Motor.GetSpeed("A")<>0
+  EndWhile
+  Program.Delay(100)
+  Motor.ResetCount("A")
+EndSub
+
+intergal = 0
+lastError = 0
+Function PID_Steering(in number value1, in number value2, in number kp, in number ki, in number kd)
+  error = value1 - value2
+  p = error * kp
+  
+  @intergal = @intergal + error
+  If @intergal>5 Then
+    @intergal = 5
+  ElseIf @intergal<-5 Then
+    @intergal = -5
+  ElseIf error = 0 Then
+    @intergal = 0
+  EndIf
+  
+  i = @intergal * ki
+  
+  d = (error-@lastError) * kd
+  @lastError = error
+  
+  correction = p + i + d
+  Motor.StartPower("A",correction)
+EndFunction
+
+Function Drive(in number speed)
+  If @leftWall = 0 Or @rightWall = 0 Then
+    Motor.StartPower("D",0)
+  Else
+    Motor.StartPower("D",speed)
+  EndIf
+  
+  If @trackWall = 1 Then
+    If @cw = 1 And Math.Abs(@relativeHeading)<40 Then
+      wallTurn = (200 - @rightWall) * 0.1 '----------------------distance with wall----------------------------'
+    ElseIf @cw = -1 And Math.Abs(@relativeHeading)<40 Then
+      wallTurn = (@leftWall - 200) * 0.1 
+    EndIf
+    If wallTurn>40 Then
+      wallTurn = 40
+    ElseIf wallTurn<-40 Then
+      wallTurn = -40
+    EndIf
+  EndIf
+  
+  turn = 44 + @relativeHeading + wallTurn '-------------------------reset steering-------------------------'
+  PID_Steering(turn,Motor.GetCount("A"),6,0.5,5) 'steering sensitivity
+EndFunction
+
+Function DriveDegrees (in number speed, in number degrees, in number stop)
+  Motor.ResetCount ("D")
+  While Math.Abs (Motor.GetCount("D"))<degrees
+    Drive (speed)
+  EndWhile
+  If stop = 1 Then
+    Motor.Stop ("D", "True")
+  EndIf
+EndFunction
+
+'-------------------------------First section--------------------------------'
+target = 0
+cw = 0
+trackWall = 0
+
+Time.Reset1()
+ResetSteering()
+DriveDegrees(100,150,0)'only run in degree
+Speaker.Tone(100,400,50)
+While @leftWall<2000 And @rightWall<2000
+  Drive(55) '<-----------------Speed
+EndWhile
+
+If @rightWall>900 Then
+  cw = 1
+Else
+  cw = -1
+EndIf
+
+'---------------------------------------Get in second section-------------------------'
+target = target + 89.5 * cw 
+trackWall = 0
+DriveDegrees(90,1500,0)
+Speaker.Tone(100,400,50)
+
+
+trackWall = 1
+DriveDegrees(90,650,0)
+Speaker.Tone(100,400,50)
+
+If cw = 1 Then
+  While @rightWall<900
+    Drive(90) '<-----------------Speed
+  EndWhile
+Else
+  While @leftWall<900
+    Drive(90) '<-----------------Speed
+  EndWhile
+EndIf
+Speaker.Tone(100,800,50)
+
+'---------------------------------------Get in remaining section-------------------------'
+
+For loopCount= 1 To 10
+  trackWall = 1
+  target = target + 90 * cw '90.25
+  DriveDegrees(90,1350,0)
+  Speaker.Tone(100,400,50)
+  If cw = 1 Then
+    While @rightWall<900
+      Drive(90) '<-----------------Speed
+    EndWhile
+  Else
+    While @leftWall<900
+      Drive(90) '<-----------------Speed
+    EndWhile
+  EndIf
+  Speaker.Tone(100,800,50)
+EndFor
+
+'---------------------------------------Get in last section-------------------------'
+
+target = target + 90 * cw
+DriveDegrees(90,1450,1)
+LCD.Clear()
+LCD.Text(1,0,0,2,Time.Get1())
