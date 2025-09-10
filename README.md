@@ -1,5 +1,9 @@
+# Table of Content
+
+
+
 # Introduction
-This engineering documentation covers the car’s mobility management, power and sensor systems, obstacle detection and avoidance, construction design, integration of third-party sensors, and the improvements made throughout our preparation for the World Robot Olympiad Open Championship Philippines (WRO) 2025 Future Engineers Category Competition.
+This engineering documentation details comprehensive aspects of the car’s mobility management, power and sensor systems, obstacle detection and avoidance, construction design, integration of third-party sensors, and the improvements that were made throughout our preparation for the World Robot Olympiad (WRO) Open Championship in Manila, Philippines 2025 under the Future Engineers Category.
 
 # Content
 **schemes** This folder contains one or several schematic diagrams in the form of JPEG, PNG, or PDF of the electromechanical components illustrating all the elements (electronic components and motors) used in the vehicle and how they connect.
@@ -15,14 +19,14 @@ This engineering documentation covers the car’s mobility management, power and
 **other** This folder contains other files which can be used to understand how to prepare the vehicle for the competition.
 
 # X-UniTech Team, Malaysia
-X-UniTech from Malaysia is a team of three members who work together to build and program a self-driving robot car. We design, build, and manage all the electronic and mechanical parts to ensure our self-driving car runs smoothly. Here are our team members:
+Proudly from Malaysia, X-UniTech is a three-member engineering team specializing in the development of autonomous vehicles. Our team is responsible for the end-to-end design, construction, and integration of the vehicle's mechanical and electronic systems to ensure optimal performance. Meet our members:
 
 **Vun Xiu Xuan, Alvin Kong Wei Ee, and Jennissa Aing Anak Jim.**
 
 image
 
 # Performance video
-This video provides an overview of our self-driving car’s design, demonstrates its performance in both the Open Challenge and the Obstacle Challenge, and explains how it operates in each scenario. Scan the QR code below to watch the video for both challenges.
+This video demonstrates our autonomous vehicle's design and its operational performance in both the Open Challenge and the Obstacle Challenge. Scan the QR code below to watch the video for both challenges.
 
 Please click the link (https://drive.google.com/file/d/18GrwdV6JntD4dnHnbf9u1oeJ7yk-v8FS/view?usp=sharing)  or scan the QR code to watch the video and explore our project in action.
 
@@ -31,13 +35,15 @@ image
 
 
 # 1.0 Mobility management
-This section explains how our self-driving car is designed, how the motors are used to control its movement, and how they are connected to the vehicle. It also describes the chassis and where different parts are placed. Lastly, it introduces basic engineering ideas like speed, torque, and power that affect how the car works.
+This section details the mechanical design and propulsion system of our autonomous vehicle. It covers the chassis construction, component layout, and the integration of the motors. Additionally, it introduces the fundamental engineering principles of speed, torque, and power that govern the vehicle's performance.
 
 
 ## 1.1 Design of the self-driving car
-The autonomous self-driving car is constructed using the Lego 45544 Mindstorms EV3 Education Set. 
+The autonomous self-driving car chassis and mechanical structure are built using the Lego 45544 Mindstorms EV3 Education Set. 
 
-The figure below displays the images of the self-driving car that we have designed and constructed.
+image
+
+The figures below show the autonomous vehicle we designed and constructed.
 
 image
 
