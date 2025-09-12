@@ -22,6 +22,7 @@ This engineering documentation details comprehensive aspects of the car’s mobi
 Proudly from Malaysia, X-UniTech is a three-member engineering team specializing in the development of autonomous vehicles. Our team is responsible for the end-to-end design, construction, and integration of the vehicle's mechanical and electronic systems to ensure optimal performance. Meet our members:
 
 **Vun Xiu Xuan, Alvin Kong Wei Ee, and Jennissa Aing Anak Jim.**
+
 <img width="365" height="257" alt="image" src="https://github.com/user-attachments/assets/d50b551d-1ce7-4557-a622-ba1f8753d287" />
 <img width="364" height="264" alt="image" src="https://github.com/user-attachments/assets/5ba15b15-0ddf-4bdf-a3ad-2fbf60f25bc9" />
 
@@ -300,103 +301,128 @@ Plus, each sensor such as EV3 Gyro Sensor, EV3 Color Sensor, EV3 Ultrasonic Sens
 
 The GyroReset allows the robot to reset the gyro sensor so that the gyro will measuring the angles from zero again. In sense, it is like pressing the “reset” button on the EV3 Gyro Sensor so that it starts measure the heading from 0 again. This is important because it avoids cumulative errors that might affect the robot.
 
-image
+<img width="617" height="255" alt="image" src="https://github.com/user-attachments/assets/5e3baeef-3fc2-486a-ae19-d60312b50cd0" />
 
- 
+
 2.	Reset Steering
 The ResetSteering helps to reset the steering motor before the robot starts running. It will turn the steering wheel all the way to one side and let the robot know that is the starting point. This is important because it will allow the robot steering always aligned in middle before it starts to move.
 
-image
+<img width="470" height="277" alt="image" src="https://github.com/user-attachments/assets/f4c2d2b9-0588-440a-be39-a0ced003cbac" />
 
 
 3.	PID Steering Control
 The PID Steering function helps the robot to adjust the steering motor whenever it starts to drift off from the target. This function is crucial in the Obstacle Challenge because it allows the robot to maintain in the straight heading after avoiding the pillars. The P part fixes most of the error right away, the I part makes small adjustments over time and the D part make sure that the correction is done smoothly. These three adjustments are added together to get one correction value, which is sent to motor A to turn the steering. This keeps the robot moving smoothly, avoiding zig-zagging, and makes its turns more accurate.
 
-image
+<img width="385" height="262" alt="image" src="https://github.com/user-attachments/assets/d171f3bd-e7cc-43a2-9ec2-3b576d3ca5fb" />
 
- 
+
 4.	Drive
 The Drive function combined four main parts which including the TrackWall, TrackPillar and PID Steering. In sum, these values help the robot constantly adjust its steering and make sure the robot move smoothly and accurately.
 
 (i)	TrackWall
 The robot checks its distances from the walls within the range of 150mm. If it’s too close to one of the sides, it will steer away. Plus, the robot will check which wall is closer by comparing the distance values from both sides. If the left wall is closer, the robot will adjust its steering to follow the left side. If the right wall is closer, it will follow the right side instead, but with a negative steering value to turn in the opposite direction.
 
-image
+<img width="584" height="178" alt="image" src="https://github.com/user-attachments/assets/f8e58afc-3a22-44ea-8904-75c210ce57fc" />
+
 
 If neither wall is detected within the set range, the robot will not make any wall-following adjustments. This allows it to continue moving straight without unnecessary corrections.
  
-image
+<img width="592" height="162" alt="image" src="https://github.com/user-attachments/assets/c06e7332-61b5-406e-be34-c99656acd609" />
+
 
 (ii)	TrackPillar
 This part help to calculate how far each pillar from the Pixy2 Camera’s view. It uses the Pythagorean theorem to figure out the straight-line distance based on the difference in horizontal (x) and vertical (y) positions.
 
-image
+<img width="703" height="90" alt="image" src="https://github.com/user-attachments/assets/fda0a321-517e-4aa5-9ce0-6e94fee56760" />
+
 
 This part helps the robot to check the presence of red, green pillars and magenta parking lot. If the pillars are near to the robot, the robot will start reacting by showing the LED colours. 
 
-image
+<img width="663" height="495" alt="image" src="https://github.com/user-attachments/assets/1c748687-acba-4a06-a19c-496923e5e364" />
+
 
 If the green pillar is the closest, it sets @lastPillar = 1 and lights the green LED. Additionally, the y-coordinate (150) allow the robot to know the distance of the pillar from the Pixy2 Camera’s view. However, if the red pillar is the closet, it sets @lastPillar = 2 and light red LED. The steering will start to do the adjustment once the red pillars is located at the y-coordinate value (160) from the Pixy2 Camera’s view. If the magenta parking lot is near, the orange LED lights up. The robot will steer to the right if it is moving clockwise, or to the left if it is moving counter clockwise to avoid hitting the magenta parking lot.
 When no pillar is nearby, the robot turns off its LED light and uses the ultrasonic sensors to follow the wall. If it is moving clockwise, it will check the left wall. Conversely, if it is moving counter clockwise, it will check the right wall. If it is too far off its intended direction (relative heading), it will not make any wall adjustments to avoid over-correcting. 
  
-image
+<img width="682" height="159" alt="image" src="https://github.com/user-attachments/assets/d1087230-e24d-4094-8405-9154a71ea1c8" />
+
 
 (iii)	Steering Error
 The robot’s steering correction is based on a combination of pillar tracking and wall tracking. The robot then applies this correction to the PID steering motor. At the same time, it powers the drive motor which is the Motor D to move forward at runSpeed.
 
-image
+<img width="454" height="174" alt="image" src="https://github.com/user-attachments/assets/4541138c-3db7-442a-9633-ddce41c11418" />
+
 
 5.	Others movement block
 (i)	WaitDegrees
 WaitDegrees function makes the robot to move a certain distance based on the rotation of its drive motor (Motor D). The stop=1 means the robot will stops the motor and waits for a 50ms after finishing the movement.
 
- image
+ <img width="619" height="183" alt="image" src="https://github.com/user-attachments/assets/29aa7530-1e78-427e-b758-18da4510f063" />
+
 
 (ii)	SteeringDrive
 The SteeringDrive function makes the robot move forward a certain distance while controlling the steering. Therefore, it will combine the current steering motor position with any additional steering adjustment during both of the challenge rounds. 
 
-image
+ <img width="653" height="257" alt="image" src="https://github.com/user-attachments/assets/de204873-25f9-4150-b020-8e5a967def56" />
+
 
 6.	Main program
 When the robot starts, it first decides whether it will move in a counterclockwise or clockwise direction based on the ultrasonic sensor readings from the left and right sides.
 
-image
+<img width="664" height="132" alt="image" src="https://github.com/user-attachments/assets/5058f2c5-9be5-4653-995d-1fdb90084314" />
+
  
 As shown in the diagram below, if the left wall distance is greater than the right wall distance (leftWall>rightWall), the robot will know that it is counterclockwise. However, if the right wall is greater than left wall (rightWall>leftWall), the robot will know that it is in clockwise direction.
 
-image
+<img width="636" height="394" alt="image" src="https://github.com/user-attachments/assets/d665f89f-ba99-44de-a1cf-42b2b6ea9fe4" />
+
  
 Next, the pillar X value tells the robot where the pillar should appear in the camera’s field of view. By using this value, the robot will avoid the pillar or adjust its path to stay centred when following it. 
 
-image
+<img width="388" height="344" alt="image" src="https://github.com/user-attachments/assets/417c271d-44b8-45e7-8bd5-c19ca724f93d" />
+
+<img width="548" height="298" alt="image" src="https://github.com/user-attachments/assets/2bc0e100-67f2-43ef-8779-b594530c4480" />
+
+<img width="538" height="287" alt="image" src="https://github.com/user-attachments/assets/d0aef603-0465-4733-a7cd-0b257d352a00" />
+
 
 After exiting the parking lot, the robot will drive forward at a speed of 45 until its colour sensor detects either a blue line or an orange line on the ground. Once one of these lines is detected, the robot will immediately play a sound to indicate that the line has been found. 
 
-image
+<img width="560" height="260" alt="image" src="https://github.com/user-attachments/assets/d549e4c1-496d-428d-a516-129af419c766" />
+
 
 During the Obstacle Round, the robot adjusts its steering by correcting any error measured from three sources which include TrackPillar and TrackWall. The steering target is slightly different depending on whether the robot is moving clockwise or counterclockwise so a different adjustment value is applied for each direction. This steering correction process is repeated for 12 loops.
 
-image
+<img width="406" height="336" alt="image" src="https://github.com/user-attachments/assets/cd9f08cd-c16a-46a0-b5b3-09cf8ea3f9b9" />
+
 
 This part of the program ensures the robot does not overturn and end up facing the wrong direction while avoiding a pillar. When the robot avoids a pillar on its left side, which mean it passes a green pillar in a clockwise run or a red pillar in a counterclockwise run. It needs to turn a greater number of degrees. This extra turning ensures it does not accidentally scan the wrong-coloured line, which could cause it to head in the wrong direction.
 
-image
+<img width="463" height="349" alt="image" src="https://github.com/user-attachments/assets/3c4f5bdc-9b73-4a27-b774-c73a795b8d48" />
+
 
 After completing 12 loops, the robot will move straight for 300 for counter clockwise to ensures the robot do not hit any pillars while moving into the parking area. After moving for certain degrees, the robot will adjust its heading based on the direction. The robot will drive into the wall with a speed of 100 to make sure its heading is perfectly straight. This is important because it allows the robot to move backward in a straight way. 
 
- image
+<img width="442" height="242" alt="image" src="https://github.com/user-attachments/assets/78bc6e1e-413e-40fb-b526-cafc8c0b15b7" />
+
+<img width="431" height="295" alt="image" src="https://github.com/user-attachments/assets/8396c303-9e27-4828-a323-f71944aa778b" />
+
 
 Next, the robot will perform a reverse action and readjust the heading target to ensure it is perfectly straight and aligned parallel to the magenta parking lot.
 
- image
+<img width="350" height="176" alt="image" src="https://github.com/user-attachments/assets/1abbb27e-1e78-4d5c-8531-b34939afe111" />
+
 
 The robot will move forward while maintaining a fixed distance from the parking lot which is 300 mm for a counter clockwise heading and 240 mm for a clockwise heading. As it moves, it continuously checks this distance. If the distance goes out of range, the robot will adjust its steering to bring it back to the correct value. Once it passes the second magenta parking lot, the robot will reverse into the parking space and ensure it is parked parallel to the parking lot.
  	 
-image
+<img width="362" height="280" alt="image" src="https://github.com/user-attachments/assets/afdd36dd-1dc0-4813-aa74-c1f6e07b7697" />
+
+<img width="352" height="280" alt="image" src="https://github.com/user-attachments/assets/40fd216f-3cd0-4cb6-b457-0fd2c8ccf0a5" />
+
  
 The flow diagram below illustrates the detailed process of parking in the magenta parking lot.
  
-image
+<img width="745" height="764" alt="image" src="https://github.com/user-attachments/assets/1024e432-def9-4971-be31-bb51a1d401be" />
 
 
 
@@ -405,24 +431,27 @@ This section showcases our custom-designed and third-party open-source parts alo
 
 At first, our autonomous self-driving car is primarily built using the LEGO Mindstorms Education EV3 Core Set 45544. However, we faced several challenges while completing both the Open and Obstacle Challenges. For example, our design required more sensor ports than the EV3 brick could provide, the EV3 colour sensor often gave inconsistent readings due to external light interference, and we lacked of suitable camera to accurately scan the pillars and the magenta parking lot. To overcome these challenges and enhance our robot’s performance, we incorporated third-party components into the design. The diagram below illustrates the additional components we used and how they helped overcome these issues.
  
-image
+<img width="664" height="412" alt="image" src="https://github.com/user-attachments/assets/fc39f24b-9a7d-4055-a132-93bc9c63060b" />
+
 
 **(i)	EV3 Sensor Multiplexer**
 We added an EV3 Sensor Multiplexer so our robot can use five sensors at once. There are two ultrasonic sensors connected to the multiplexer with different channel. With all five working together, the robot can move more accurately and handle Obstacles Challenge better.
 
- image
+ <img width="452" height="399" alt="image" src="https://github.com/user-attachments/assets/25a36773-e2e2-49db-8721-d477429ee0c6" />
+
 
 **(ii)	3D Printed Casing**
 We created a 3D-printed casing for the colour sensor. This casing blocks external light so the sensor can detect colours more accurately, and it also protects the sensor from damage if the robot bumps into something.
 
- image
+ <img width="432" height="376" alt="image" src="https://github.com/user-attachments/assets/17622bb3-134b-4bc3-bfbe-68c1cf888b0e" />
+
 
 **(iii)	Pixy2 Camera**
 We use the Pixy2 Camera because it can quickly and accurately detect objects while the robot is moving. In our design, the Pixy2 Camera is mainly used to scan and track the magenta parking lot, green and red pillars, which helps the robot recognize them in time and make the right navigation decisions during the Open and Obstacle Challenges.
  
-image
- 
+ <img width="726" height="269" alt="image" src="https://github.com/user-attachments/assets/a3d5ce84-2d24-4226-84c9-ef4a4b7145a9" />
 
+ 
 
 # 5.0 Improvements
 In this section, we explain the problems we faced while building our self-driving car and the different methods we used to solve them. By studying each problem carefully, we made changes that improved the car performances. The improvements towards the robot can be categorized into two main parts which is the construction and programming parts.
@@ -433,49 +462,66 @@ We improved the construction of robot from time to time whenever we encountered 
 **(i)	Replace the front steering wheel with a smaller size wheel**
 Initially, we are using the LEGO tyre 44771 for the front wheel but then we switched to the smaller tyre from Spike Essential Set which is known as the Medium Azure Hard Rubber Tyre. The reduced size improved the car’s maneuverability, making it easier to turn and park in tight spaces. Moreover, the steering’s sensitivity is better when avoiding pillars.
 
- image
+ <img width="655" height="304" alt="image" src="https://github.com/user-attachments/assets/de505ec5-620f-438d-b50e-4d97254ae388" />
+
 
 **(ii)	Adding a 3D-Printed Casing to the EV3 Colour Sensor**
 Our EV3 colour sensor failed to detect the orange and blue lights for several times. Since this scanning process is crucial for determining the robot’s direction, we designed and 3D-printed a custom casing for the sensor. The casing’s main purpose is to block external light that could interfere with colours detection, while also protecting the sensor from impacts or collisions.
 
- image
+ <img width="606" height="330" alt="image" src="https://github.com/user-attachments/assets/d71c9c71-768d-4a91-8ff2-f8a0b89fe26b" />
+
  
 **(iii)	Implementing a multiplexer to solve the limited EV3 ports issue**
 We also encountered an issue with the limited number of EV3 ports. During the Obstacle Challenge, multiple sensors were required at the same time, which quickly used up all available ports. To overcome this, we used a multiplexer, which allowed us to expand the number of connections. Both ultrasonic sensors were connected to the multiplexer, freeing up the built-in EV3 ports for other essential sensors.
 
-  image
+  <img width="566" height="326" alt="image" src="https://github.com/user-attachments/assets/1924f1de-b4d6-4460-a012-11216d9fdad0" />
+
 
 **(iv)	Pixy2 Camera Position Adjustment**
 Initially, we noticed a delay in the robot’s response when avoiding pillars. Hence, we adjusted the Pixy2 camera position by moving it slightly backward. This allowed the camera to detect pillars earlier, giving the steering system more time to make corrections and preventing collisions towards the pillars during Obstacle Challenge.
 
-  image
+  <img width="537" height="330" alt="image" src="https://github.com/user-attachments/assets/801dd19f-72ae-482c-9b1c-c17f65e88ca8" />
+
 
 **5.2	Robot programming
 (i)	Resetting the gyro**
 When we tested our EV3 robot, we noticed the gyro sensor sometimes drifted. This means that even when the robot was not turning, the angle reading slowly changed. At first, we tried fixing it by adding a software reset in our program. The reset switched the sensor into the correct mode, sent a command to set the angle back to zero, and waited until it was ready. This worked most of the time, especially when we reset it just before the robot started moving.
 
- image
+ <img width="514" height="189" alt="image" src="https://github.com/user-attachments/assets/235d36bd-3539-4e3b-931a-b0b878f1845d" />
+
  
 However, we found that the gyro could still drift during the run, even after the software reset. Things like vibration, motor movement, and small calculation errors could still affect the reading. Hence, we decided that a hard reset might work better. A hard reset clears the sensor’s memory more deeply than a software reset, giving a cleaner and more stable reading at the start.
  
-  image
+  <img width="483" height="401" alt="image" src="https://github.com/user-attachments/assets/a4c5c592-69cd-48e4-aae1-4de5caaff037" />
+
   
 **(ii)	Ensuring continuous operation of ultrasonic sensor**
 The ultrasonic sensor has an issue where it may turn off unexpectedly during operation without any warning. To address this, we've developed a program that automatically sets the robot's motor speed to zero whenever the ultrasonic sensor detects a value of zero. This precaution effectively stops the robot's movement until the sensor resumes normal operation, reducing any risks associated with the sensor failure. Once the ultrasonic sensor begins detecting values again, the robot will return to its normal speed, ensuring smooth and uninterrupted movement.
 
-  image
+  <img width="620" height="107" alt="image" src="https://github.com/user-attachments/assets/0ca2b448-e0a5-49a1-86ef-04b96e014df0" />
+
 
 **(iii)	Adding signal light to EV3 Brick**
 At first, we didn’t connect the Pixy camera with the EV3 brick’s LED light. This made it harder to know when the robot had spotted a pillar. During testing, we had to guess whether the robot was reacting at the right time.
 To make this easier for competition, we set the LED to change colour when the robot sees a pillar. By looking at the LED and the robot’s position on the map, we can quickly tell if it is reacting too early or too late. We also thought about adding sound alerts, but in a crowded and noisy place, it would be hard to hear them. That’s why using lights is a better choice to overcome the problems.
 
-  image
+  <img width="363" height="337" alt="image" src="https://github.com/user-attachments/assets/2f800df1-ad0b-4762-b0d1-d7ce408523db" />
+
+  <img width="448" height="255" alt="image" src="https://github.com/user-attachments/assets/2532ed9f-257f-4791-bbe4-fe3119eb2307" />
+
  
 **(iv)	PID Steering**
 Before this, we didn’t use PID steering in our robot’s program. From our observation, the steering corrections were not precise. The robot sometimes drifted off track or turned too much, which made it slower and less accurate.
 To solve this, we added PID steering. This allows the robot to constantly adjust its steering to follow the target path more accurately. After adding PID, the robot turns smoothly and stays on track much better. This greatly improved our performance in both of the challenges. The video in the QR code clearly shows the difference when PID steering is applied.
 
-  image
+  Programming of the PID steering system
+  
+  <img width="344" height="218" alt="image" src="https://github.com/user-attachments/assets/e1303454-3f4f-4ea2-b379-d42f0c0bddc2" />
+
+  PID Steering System Demo
+
+  <img width="225" height="220" alt="image" src="https://github.com/user-attachments/assets/080be134-d43d-40c7-8223-faab95baf4d1" />
+
 
 
 # Credits
@@ -485,7 +531,127 @@ We extend our sincere appreciation to LEGO Education for their generous support 
 # Appendix 1
 The Building Instruction of the Self-Driving Car
 
-Image
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/a6396a9b-8600-4aa5-8666-029c77aa1713" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/5c4e8127-b3f7-461f-9467-25664f49015d" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/79b0454b-d3dc-4f8e-adc7-275427cc4cf7" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/5a8b2ffd-88ef-4f36-bc59-daeff01ddfcc" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/3df2acca-ac3c-4465-9488-3b1b76c4f242" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/d5a02b18-5b7d-443c-b61e-d6dc7f8d2abb" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/85a2579a-2dda-4004-b952-ac522e09af81" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/7f563077-17d2-4656-b027-2dfb3e681a01" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/169b5747-b810-4e45-8da1-a1ad06e3396d" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/817d23b2-7c4f-485e-9d3a-5d5674ce1433" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/bfe24264-76fe-4e58-999e-f6617cb4d228" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/0990ac0b-8524-4027-923c-fe9b9b569f9e" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/28c83efb-c45f-4c71-8710-0e3411dfdaba" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/4bc7c5e0-f4dd-4c5d-b8e3-bb3488f19ff9" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/4f486c5e-349a-4dba-bf98-45b857b37572" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/227c41ff-287a-485d-af06-6bc8f410c377" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/7c160b96-c7b1-4a9a-88d7-3edfd2f08cf5" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/f01f8c34-e25f-40ba-a106-e45ae2b0196d" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/0ba08125-d565-428f-882c-48cf404114ab" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/1fed3c97-c7ce-46be-8dc0-29dfc2cb51e5" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/83d2b5e6-f191-43a7-9a52-47937427779a" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/68ab601d-9a3b-41f1-984b-9b484022226b" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/2a7133a8-4e0f-4067-9836-694b8e8c07fa" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/a9e6a418-8d01-4b8a-ab82-c018674052ba" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/60d5a73d-da02-437c-bcd3-40d12696483f" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/3a6fd252-b11f-48d6-99df-cfcd4651a389" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/abaa1335-8849-47c8-ab74-6116c1dc8bfa" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/e8f72490-c75b-4917-b836-96575abf4af0" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/cc858b59-293b-4e06-a9b7-57a9055fe49f" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/b744e712-e72e-4148-bac5-9aa97014bed7" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/d5b5e8d8-55d7-4a39-b82a-6c55167915be" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/c7daa6e0-73ad-4e35-b85c-14268f837f98" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/2b1b4aaf-a140-472b-af7d-5e66d3e84d39" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/92576833-dd11-4794-a964-10cb68bdec2e" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/7a7d7518-7e91-44e6-841c-9c4dd6f83613" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/ba899080-bb26-4c4a-b572-92621fad4c8c" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/98db857d-33c6-4c9a-a6b5-c83645990f4e" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/1a3445ee-a2b0-4535-986e-2edc7aeef305" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/00a993dc-7ab0-4af6-a183-4f15a7b13650" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/624caab6-865f-4225-8756-e9066a205947" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/1e7bb21c-96c0-49a4-aef5-bb8580494492" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/5ddb285c-6ebe-4e21-a3e6-f584e2a0f6ee" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/6ca76a5d-126f-4563-9196-d8a9e31f1608" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/3aa36cc6-48f8-41a9-8fe0-75bb5e2a5b4e" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/c60f74d8-98b7-461a-b1c6-05c583ea7d67" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/528ca9f0-7f11-47d3-bcd3-8a5fb9653552" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/7c0ae2ed-a01a-4f2c-94c1-ef7f4409688d" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/84e32600-07a9-495d-9425-c97eb4efa909" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/693658f1-20d8-494d-a305-6ae4810738e9" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/9f949fe4-e0f0-43a8-8dcb-5dcbdb828371" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/12de4258-4a66-4b31-a0a5-eb64cf20fa9a" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/eeef0de1-c960-4cd3-95dd-20247d7c894b" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/cbbdd798-a772-462b-8434-d7c0552e98ee" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/08a54732-954e-4c55-bcd0-1d9c4621f3f3" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/cbafe0fd-c740-4566-b2e2-6d8dc741ab94" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/2429042d-0e35-408e-87ee-9f69345c2573" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/d6045d6b-280d-43f8-9926-131814363460" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/a0641a2d-94a0-4a5f-97f6-7a197add58cc" />
+
+<img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/a2354e5d-e840-40b2-99ea-f5feca1b2e30" />
+
+
+
+
 
 # Appendix 2
 Open Challenge Programming
