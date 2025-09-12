@@ -22,16 +22,16 @@ This engineering documentation details comprehensive aspects of the car’s mobi
 Proudly from Malaysia, X-UniTech is a three-member engineering team specializing in the development of autonomous vehicles. Our team is responsible for the end-to-end design, construction, and integration of the vehicle's mechanical and electronic systems to ensure optimal performance. Meet our members:
 
 **Vun Xiu Xuan, Alvin Kong Wei Ee, and Jennissa Aing Anak Jim.**
+<img width="365" height="257" alt="image" src="https://github.com/user-attachments/assets/d50b551d-1ce7-4557-a622-ba1f8753d287" />
+<img width="364" height="264" alt="image" src="https://github.com/user-attachments/assets/5ba15b15-0ddf-4bdf-a3ad-2fbf60f25bc9" />
 
-image
 
 # Performance video
 This video demonstrates our autonomous vehicle's design and its operational performance in both the Open Challenge and the Obstacle Challenge. Scan the QR code below to watch the video for both challenges.
 
 Please click the link (https://drive.google.com/file/d/18GrwdV6JntD4dnHnbf9u1oeJ7yk-v8FS/view?usp=sharing)  or scan the QR code to watch the video and explore our project in action.
 
-
-image
+<img width="166" height="165" alt="image" src="https://github.com/user-attachments/assets/e35994b9-700a-440a-b06a-3705248d47ea" />
 
 
 # 1.0 Mobility management
@@ -41,11 +41,35 @@ This section details the mechanical design and propulsion system of our autonomo
 ## 1.1 Design of the self-driving car
 The autonomous self-driving car chassis and mechanical structure are built using the Lego 45544 Mindstorms EV3 Education Set. 
 
-image
+<img width="516" height="368" alt="image" src="https://github.com/user-attachments/assets/42c9c357-71c3-41f2-b8d0-a25270740402" />
 
 The figures below show the autonomous vehicle we designed and constructed.
 
-image
+
+Top view	
+
+<img width="349" height="466" alt="image" src="https://github.com/user-attachments/assets/c5b04894-63ce-49a5-b92e-650f30c32ddf" />
+
+Bottom view 
+
+<img width="357" height="466" alt="image" src="https://github.com/user-attachments/assets/341b6b49-c57a-47b6-85e0-897d9bb2ec4d" />
+
+Front view	
+
+<img width="350" height="494" alt="image" src="https://github.com/user-attachments/assets/ef90c8b7-56d2-49cb-a10c-21f6dfb32ab6" />
+
+Back view 
+
+<img width="362" height="498" alt="image" src="https://github.com/user-attachments/assets/d891b837-2c75-49ce-a9d3-0316de5097e2" />
+
+Left side view	
+
+<img width="346" height="411" alt="image" src="https://github.com/user-attachments/assets/003be512-0aa2-4583-9ef6-77ec77f60eda" />
+
+Right side view 
+
+<img width="359" height="411" alt="image" src="https://github.com/user-attachments/assets/37c9c7bb-44b1-421f-b975-38e14548afab" />
+
 
 ## 1.2  Chassis of the self-driving car
 The self-driving car chassis is designed to provide structural support and maintain stability, especially during high-speed maneuvers like sharp turns and rapid acceleration.
@@ -54,42 +78,55 @@ The self-driving car chassis is designed to provide structural support and maint
 **(i) Selection of tyre**
 For the front steering axle, we selected the Medium Azure Hard Tyre from the Spike Essential set because of its hard rubber compound that minimizes bouncing, allowing the vehicle to track in a straight line more reliably compared to softer tyres. The tyre's smaller diameter enables smoother and more precise steering corrections.
 
-image
+<img width="479" height="315" alt="image" src="https://github.com/user-attachments/assets/85e48324-48cb-4a60-baed-4a827232a1ad" />
+
 
 The rear axle is fitted with LEGO MINDSTORMS EV3 tyres (62.4 x 20 mm) on 43.2 mm rims. These tyres were selected for the excellent traction their tread pattern provides on typical competition surfaces, such as floors and mats. This high-grip design prevents wheel slippage during rapid acceleration and high-speed cornering. 
 
-image
+<img width="539" height="367" alt="image" src="https://github.com/user-attachments/assets/edb8e92f-330f-4b38-9d19-06d03510cad0" />
+
 
 **(ii) Implementation of motor and its engineering principle**
 Our self-driving car propulsion system consists of two EV3 Medium Motors mounted in a compact, orthogonal arrangement (one horizontal, one vertical). This design offers several key advantages: it optimizes internal space, simplifies the gear train assembly, and contributes to a low center of gravity. A low center of gravity is crucial for maintaining stability during the high-speed maneuvers required in the Open Challenge.
 
-image
+<img width="619" height="329" alt="image" src="https://github.com/user-attachments/assets/14a16d66-a2fd-4a9f-bcc1-8c902d057c4a" />
+
 
 The diagram below illustrates the specifications and features of the EV3 Medium Motor.
 
-image
+<img width="568" height="351" alt="image" src="https://github.com/user-attachments/assets/58403f33-14d7-4864-ae48-f65e4ec923cd" />
+
 
 The vehicle's steering mechanism is controlled by an EV3 Medium Motor, selected for its high responsiveness and precision. With a running torque of 8 Ncm and a stall torque of 15 Ncm, the motor provides ample force for steering control. Furthermore, its rotational speed of 260 rpm allows quick rotations, making it well-suited for fine adjustments when avoiding traffic signs. 
 
  **(iii) Implementation of differential gear**
 A differential gear is integrated into the drive axle, allowing the left and right wheels to rotate at different speeds. This mechanism is essential for executing smooth, controlled turns, as it prevents wheel binding and improves stability. This is particularly critical when navigating the tight corners found in the Open Challenge.
 
-image
+<img width="500" height="351" alt="image" src="https://github.com/user-attachments/assets/7e993a1f-a001-44ea-8b42-293082d8e966" />
+
 
 **(iv) Engineering principle of steering**
 The steering system is designed using Ackermann steering geometry. 
 
-image
+<img width="494" height="389" alt="image" src="https://github.com/user-attachments/assets/2c09c625-a411-4dd0-97ab-f537d002b1dc" />
+
 
 This principle turns the inner front wheel at a sharper angle than the outer wheel, allowing both to follow ideal concentric turning circles. By minimizing lateral tire scrub, this geometry significantly reduces friction and wear. The primary benefits include enhanced cornering stability, improved traction, and the ability to execute sharp turns with greater precision.
 
-image
+<img width="421" height="311" alt="image" src="https://github.com/user-attachments/assets/80bffd62-5b4f-4463-b031-e2dc80a40fb5" />
+
 
 
 ## 1.3 Building of the self-driving car
 The building instruction for the self-driving car and the video of showcasing the 3D printing process of its parts can be accessed via the QR Code below. 
 
-image
+Building Instruction of Self-Driving Car (PDF format)
+
+<img width="199" height="206" alt="image" src="https://github.com/user-attachments/assets/f25afabb-8c35-4adc-92a0-4cec379ad04f" />
+
+3D Printing Process Video
+
+<img width="221" height="204" alt="image" src="https://github.com/user-attachments/assets/8233f609-a69f-4fa5-9d3e-60af5a02538b" />
 
 
 # 2.0	Power and sense management
@@ -98,49 +135,71 @@ This section details the vehicle's power source and sensor systems. It covers th
 ## 2.1 Power source
 The self-driving car is powered by a Soshine 1.5V AA rechargeable lithium-ion (Li-ion) battery with an energy capacity of 2600 mWh. This battery technology was selected for its stable voltage output, which ensures consistent and reliable performance for all electronic components. 
 
-image
+<img width="438" height="300" alt="image" src="https://github.com/user-attachments/assets/cd4c3ab6-8e85-4856-9d72-5b4642d59f65" />
+
 
 ## 2.2 Sensor
 The self-driving car is designed to handle the diverse requirements of the Open and Obstacle Challenges. It includes a color sensor, two ultrasonic sensors, a gyro sensor, and a Pixy2 camera. The diagram below illustrates the placement and integration of these components.
 
-image
+<img width="529" height="290" alt="image" src="https://github.com/user-attachments/assets/73058897-d56b-4850-9406-d10a5b7c9c1b" />
+
 
 **(i) Pixy2 camera** 
 The Pixy2 camera serves as the primary vision system for the vehicle during the Obstacle Challenge. Its main function is real-time object detection, allowing it to simultaneously identify and track the red and green pillars while the vehicle is in motion. It also helps to scan the magenta-colored parking zone to ensure the vehicle avoids this restricted area while navigating the course. The Pixy2 camera is mounted at a 75° angle to provide optimal visibility when tracking traffic signs.
 
-image
+<img width="246" height="284" alt="image" src="https://github.com/user-attachments/assets/1d2ac638-e6fd-4db8-88cf-8361be14d60c" />
+
+<img width="284" height="283" alt="image" src="https://github.com/user-attachments/assets/d6b8ae31-ecd3-4bfa-bab4-097ae858860d" />
+
+
 
 **(ii) Gyro sensor**
 One gyro sensor is used to support our self-driving car. During both Open and Obstacle Challenge, it helps to measure angles and maintain the correct heading while driving. The gyro sensor also helps the robot to turn at accurate angle after passing the edge of the inner wall. While the gyro sensor can sometimes display errors at startup due to calibration issues, we resolved this by performing a hard reset before each run.
 
-image
+<img width="513" height="334" alt="image" src="https://github.com/user-attachments/assets/2bdfbba5-7d41-4714-8c05-e6997b841830" />
+
 
 **(iii) Ultrasonic sensor**
 Our self-driving car is equipped with two EV3 ultrasonic sensors. These sensors measure the distance between the robot and wall to avoid collision towards the walls. The sensors operate by emitting sound waves and calculating the time it takes for them to bounce back after hitting a wall. This data enables the self-driving car to navigate efficiently, make accurate turns, and aim to complete the Open Challenge in the shortest time possible. 
 
-image
+<img width="315" height="305" alt="image" src="https://github.com/user-attachments/assets/0809df99-9d8f-4d7b-b28f-1d5195a526bc" />
+
 
 **(iv) Color sensor**
 The colour sensor is only used in the Obstacle Challenge to determine when the self-driving car should turn. In a clockwise direction, the car turns right whenever it detects an orange line, while in a counterclockwise direction, it turns left upon detecting a blue line. The sensor functions by measuring the intensity of light entering it, allowing the car to identify colour lines and determine whether it is moving clockwise or counterclockwise. 
 
-image
+<img width="349" height="320" alt="image" src="https://github.com/user-attachments/assets/46926e19-91de-4883-96db-04ca36fd4193" />
+
 
 ## 2.3 Build of materials
 
 The table below shows the Build of Materials (BOM) used to build the self-driving car, making sure each part matches the car’s needs and functions.
 
-image
+<img width="662" height="878" alt="image" src="https://github.com/user-attachments/assets/bedbd3f5-f6c8-4b61-a982-93de403b9265" />
+
+<img width="662" height="907" alt="image" src="https://github.com/user-attachments/assets/c15c042b-48e6-444d-80d6-ddc465878195" />
+
+<img width="662" height="909" alt="image" src="https://github.com/user-attachments/assets/4c074d79-2e91-441d-868f-33b3e589be14" />
+
+<img width="662" height="911" alt="image" src="https://github.com/user-attachments/assets/f1060e62-c8aa-410f-b674-557e34d851ec" />
+
+<img width="662" height="911" alt="image" src="https://github.com/user-attachments/assets/30ff390c-36b4-4b36-8f76-fe508580a51d" />
+
+<img width="662" height="539" alt="image" src="https://github.com/user-attachments/assets/66f3e2ff-81b4-441c-a2d6-975878f0d7a4" />
+
 
 ## 2.4 Wiring diagram
 The wiring diagram below illustrates the sensors’ power consumption and shows how the motors and sensors are connected within our self-driving car to support the setups for both the Open Challenge and the Obstacle Challenge. 
 
 **(i) Open challenge wiring diagram**
 
-image
+<img width="655" height="809" alt="image" src="https://github.com/user-attachments/assets/e0aa7e0c-77e4-455e-8e8a-7da702f94cbf" />
+
 
 **(ii) Obstacle challenge wiring diagram**
 
-image
+<img width="631" height="963" alt="image" src="https://github.com/user-attachments/assets/32a0784a-7d09-4f24-be46-6c2d7bc2f1d3" />
+
 
 # 3.0 Obstacle management
 In our project, we utilize the Clev3r-Python programming language to operate the robot. The programming structure is divided into two main sections which is the Open Challenge and the Obstacle Challenge. This section includes a flowchart and an overview of the code used for both challenges. 
@@ -148,15 +207,18 @@ In our project, we utilize the Clev3r-Python programming language to operate the
 ## 3.1 Open challenge
 To complete the open challenge, our robot uses two main sensors which is an EV3 Gyro Sensor and two EV3 Ultrasonic Sensors on both the left and right sides. Since both EV3 Ultrasonic Sensors share the same port, we use a multiplexer to allow the robot to read data from each one separately. The left ultrasonic sensor is connected to Channel 1 of the multiplexer, while the right ultrasonic sensor is connected to Channel 3.
 
-image
+<img width="689" height="422" alt="image" src="https://github.com/user-attachments/assets/3fcfba2a-4495-4989-8a29-32aec5166e51" />
+
 
 The EV3 Ultrasonic Sensors helps the car to measure the distance between the robot and the walls. By comparing readings from the left and right sensors, the robot can determine whether it should move clockwise or counter clockwise. These readings also help the robot adjust its steering to avoid collisions and stay at a safe distance from inner and the outer walls. Additionally, the EV3 Gyro Sensors monitor the robot’s heading, ensuring it maintains a straight path and performs accurate turns at the correct angle when turning.
 
-image
+<img width="647" height="378" alt="image" src="https://github.com/user-attachments/assets/3df20184-dd6b-4d99-965e-1ab41acfaa40" />
+
 
 Diagram below shows the flowchart for Open Challenge: 
 
-image
+<img width="596" height="978" alt="image" src="https://github.com/user-attachments/assets/fd3e983a-b079-4a7a-87bd-36ca5dd3cfd6" />
+
 
 Appendix 2 contains the complete programming code for the Open Challenge.
 
@@ -164,58 +226,77 @@ Below is a brief explanation of the key parts of the code used to control the ro
 1.	Initialization and Setup
 This part is aim to set up the sensors and multiplexer before running. The setMultiplexerMode function allows the EV3 to connect with both ultrasonic sensors in the same port while the getMultiplexerValues function allows the robot to read the distance values from the left and right ultrasonic sensors. Additionally, the ReadSensor continuously updates the robot’s heading and wall distances in real time.
 
-image
+<img width="603" height="427" alt="image" src="https://github.com/user-attachments/assets/7b830802-533e-4529-9f94-ff1041fb096f" />
+
 
 2.	Reset Steering
 Reset Steering make sure the steering motor starts at a fixed desired position before driving. The robot turns the steering motor all the way to the left for 300 milliseconds by using the medium motor in the port A. Hence, it waits until the motor completely stops moving, which means it has hit the limit. A short pause is added to let the medium motor. After that, the motor’s rotation counter is reset to zero. This step is important because it tells the robot exactly where the “straight ahead” position is.
 
-image
+<img width="397" height="222" alt="image" src="https://github.com/user-attachments/assets/cba77815-5420-4b5b-a06f-f2e01a617227" />
+
 
 3.	PID Steering Control
 The PID Steering function helps the robot to adjust the steering motor whenever it starts to drift off from the target. The P part fixes most of the error right away, the I part makes small adjustments over time and the D part make sure that the correction is done smoothly. These three adjustments are added together to get one correction value, which is sent to motor A to turn the steering. This keeps the robot moving smoothly, avoiding zig-zagging, and makes its turns more accurate.
 
-image
+<img width="641" height="316" alt="image" src="https://github.com/user-attachments/assets/63c8691d-fe5d-4f1f-91b2-e9cd30a4f4d4" />
+
 
 4.	Drive
 The Drive function moves the robot forward and keeps it aligned when following a wall. If no wall is detected on either side, the drive motor stops; otherwise, it runs at the set speed. When wall-following mode is on, the robot adjusts its steering based on the distance to the wall. It then combines this adjustment with its current heading to get a target steering angle, which is sent to the PID Steering function for smooth and accurate control.
 
-image
+<img width="558" height="484" alt="image" src="https://github.com/user-attachments/assets/3cb43713-634a-4a8d-9f56-3ee1d3a7217d" />
+
 
 The DriveDegrees function moves the robot forward in rotation degrees. He robot will keep driving at the given speed until the target degrees are reached, and stops the motor if stop is set to 1.
 
-image
+<img width="570" height="152" alt="image" src="https://github.com/user-attachments/assets/4d4a8650-6a18-4910-9b34-cc59a36c8efc" />
+
 
 5.	Main program
 This program resets timers and steering, then drives forward until it detects a wall on either side. It determines whether to follow the right or left wall based on sensor readings.
 
-image
+<img width="362" height="274" alt="image" src="https://github.com/user-attachments/assets/bd077349-e435-4c7a-9b6d-c099fcd3c8b6" />
+
+The robot will move in clockwise direction.
+<img width="374" height="186" alt="image" src="https://github.com/user-attachments/assets/d137e19e-fa6a-4819-bb71-b1af397bb7b4" />
+
+The robot will move in counter clockwise direction.
+<img width="409" height="186" alt="image" src="https://github.com/user-attachments/assets/4c8dc399-8ae5-48fa-9699-383959d3dffc" />
+
 
 Then, it loops for 11 times, turning 90° in the chosen direction in every loops. At the end, it makes one final 90° turn, drives forward, and displays the elapsed time on the LCD.
 
-image
+<img width="229" height="314" alt="image" src="https://github.com/user-attachments/assets/87a33a86-8fc1-4555-90f7-3f1018f75e71" />
+
 
 
 ## 3.2	Obstacle challenge
 To complete the Obstacle Challenge, our robot utilizes four sensors which is a Pixy2 Camera, a gyro sensor, two ultrasonic sensors on both the left and right sides and a colour sensor. Since both ultrasonic sensors need to be connected to the same port, we use a multiplexer so that the robot can read data from both of the sensors.
 
-image
+<img width="591" height="374" alt="image" src="https://github.com/user-attachments/assets/f3bdb29f-8d7b-4ede-b0ff-0218912b86cc" />
+
+<img width="593" height="361" alt="image" src="https://github.com/user-attachments/assets/83ffc2d7-9d8c-4bbc-b8bd-3b8c02a7c27d" />
+
 
 The Pixy2 Camera is connected to port 1 and it helps to detect the presence of pillars and magenta parking lot during the round. Next, the EV3 Gyro Sensor that connected to port 2 helps to ensures that the robot does the accurate turns and keep the robot’s heading straight during the round. Thirdly, both of the EV3 Ultrasonic Sensor is connected to EV3 Brick port 3 via the multiplexer. They help to detect the presence of the inner and outer wall and prevent the robot from hitting into the wall. Lastly, we utilize the EV3 Colour Sensor to identify the coloured line on the map which is the orange and blue line. The identified colour allows the robot to know the direction accurately. For instance, if orange line is scanned first, the direction will be in clockwise direction.
 
 Diagram below shows the flowchart for Obstacle Challenge: 
 
-image
+<img width="697" height="1035" alt="image" src="https://github.com/user-attachments/assets/479eef98-618f-4304-a424-0bfc770f519f" />
+
 Appendix 3 contains the complete programming code for the Obstacle Challenge. 
 
 Below is a brief explanation of the key parts of the code used to control the robot during the challenge.
 1.	Initialization and Set Up
 This part is aim to set up the Pixy2 Camera and multiplexer before running. The setLampOn and setLampOff function turns the lamp of the sensor on and off while the getSignature function allow the Pixy2Camera to read the position of the green and red pillars through their XY coordinate shown in the Pixy Mon V2 apps. The setMultiplexerMode function allows the EV3 to connect with both ultrasonic sensors in the same port while the getMultiplexerValues function allows the robot to read the distance values from the left and right ultrasonic sensors. 
 
-image
+<img width="657" height="467" alt="image" src="https://github.com/user-attachments/assets/d7dcc817-cb47-48ba-a820-a88ecad721c6" />
+
 
 Plus, each sensor such as EV3 Gyro Sensor, EV3 Color Sensor, EV3 Ultrasonic Sensor and Pixy2 Camera must be set up to their own port before the robot starts. ReadSensor continuously updates the green (Signature 1) and red (Signature 2) pillars positions on the camera views. The magenta parking lot position (Signature 3) also updated from time to time. Moreover, the robot also reads the gyro angle and wall distance in real time so that the robot will not off from its target.
 
-image
+<img width="581" height="381" alt="image" src="https://github.com/user-attachments/assets/67309d3b-521b-4ffc-b8c4-5811903b5fe6" />
+
 
 The GyroReset allows the robot to reset the gyro sensor so that the gyro will measuring the angles from zero again. In sense, it is like pressing the “reset” button on the EV3 Gyro Sensor so that it starts measure the heading from 0 again. This is important because it avoids cumulative errors that might affect the robot.
 
