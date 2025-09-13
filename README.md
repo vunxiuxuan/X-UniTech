@@ -259,9 +259,11 @@ This program resets timers and steering, then drives forward until it detects a 
 <img width="362" height="274" alt="image" src="https://github.com/user-attachments/assets/bd077349-e435-4c7a-9b6d-c099fcd3c8b6" />
 
 The robot will move in clockwise direction.
+
 <img width="374" height="186" alt="image" src="https://github.com/user-attachments/assets/d137e19e-fa6a-4819-bb71-b1af397bb7b4" />
 
 The robot will move in counter clockwise direction.
+
 <img width="409" height="186" alt="image" src="https://github.com/user-attachments/assets/4c8dc399-8ae5-48fa-9699-383959d3dffc" />
 
 
@@ -484,6 +486,7 @@ Initially, we noticed a delay in the robot’s response when avoiding pillars. H
 
 
 **5.2	Robot programming
+
 (i)	Resetting the gyro**
 When we tested our EV3 robot, we noticed the gyro sensor sometimes drifted. This means that even when the robot was not turning, the angle reading slowly changed. At first, we tried fixing it by adding a software reset in our program. The reset switched the sensor into the correct mode, sent a command to set the angle back to zero, and waited until it was ready. This worked most of the time, especially when we reset it just before the robot started moving.
 
