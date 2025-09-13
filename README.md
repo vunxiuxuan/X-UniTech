@@ -1,4 +1,3 @@
-# Table of Content
 # Table of Contents
 - [Introduction](#introduction)
 - [X-Unitech Team, Malaysia](#x-unitech-team-malaysia)
