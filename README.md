@@ -31,52 +31,6 @@
 ---
 
 
-
-# Performance video
-
-
-# 1.0 Mobility Management
-
-## 1.1 Design of the self-driving car
-
-## 1.2 Chassis of the self-driving car
-
-## 1.3 Building of the self-driving car
-
-
-# 2.0 Power and Sense Management
-
-## 2.1 Power source
-
-## 2.2 Sensors
-
-## 2.3 Build Of Materials (BOM)
-
-## 2.4 Wiring diagram
-
-
-# 3.0 Obstacle Management
-
-## 3.1 Open Challenge
-
-## 3.2 Obstacle Challenge
-
-
-# 4.0 Engineering Factors
-
-# 5.0 Improvement and Enhancement
-
-# Credits
-
-
-# Appendix 1. The Building Instruction of the Self-Driving Car
-
-# Appendix 2. Open Challenge Programming
-
-# Appendix 3. Obstacle Challenge Programming
-
-
-
 # Introduction
 This engineering documentation details comprehensive aspects of the car’s mobility management, power and sensor systems, obstacle detection and avoidance, construction design, integration of third-party sensors, and the improvements that were made throughout our preparation for the World Robot Olympiad (WRO) Open Championship in Manila, Philippines 2025 under the Future Engineers Category.
 
@@ -110,7 +64,7 @@ Please click the link (https://drive.google.com/file/d/18GrwdV6JntD4dnHnbf9u1oeJ
 <img width="166" height="165" alt="image" src="https://github.com/user-attachments/assets/e35994b9-700a-440a-b06a-3705248d47ea" />
 
 
-# 1.0 Mobility management
+# 1.0 Mobility Management
 This section details the mechanical design and propulsion system of our autonomous vehicle. It covers the chassis construction, component layout, and the integration of the motors. Additionally, it introduces the fundamental engineering principles of speed, torque, and power that govern the vehicle's performance.
 
 
@@ -147,7 +101,7 @@ Right side view
 <img width="359" height="411" alt="image" src="https://github.com/user-attachments/assets/37c9c7bb-44b1-421f-b975-38e14548afab" />
 
 
-## 1.2  Chassis of the self-driving car
+## 1.2 Chassis of the self-driving car
 The self-driving car chassis is designed to provide structural support and maintain stability, especially during high-speed maneuvers like sharp turns and rapid acceleration.
 
 
@@ -205,7 +159,7 @@ Building Instruction of Self-Driving Car (PDF format)
 <img width="221" height="204" alt="image" src="https://github.com/user-attachments/assets/8233f609-a69f-4fa5-9d3e-60af5a02538b" />
 
 
-# 2.0	Power and sense management
+# 2.0 Power and Sense Management
 This section details the vehicle's power source and sensor systems. It covers the selection rationale and implementation of each sensor, along with an analysis of the system's power consumption. A complete Build of Materials (BOM) and wiring diagram are also provided for reference.
 
 ## 2.1 Power source
@@ -214,7 +168,7 @@ The self-driving car is powered by a Soshine 1.5V AA rechargeable lithium-ion (L
 <img width="438" height="300" alt="image" src="https://github.com/user-attachments/assets/cd4c3ab6-8e85-4856-9d72-5b4642d59f65" />
 
 
-## 2.2 Sensor
+## 2.2 Sensors
 The self-driving car is designed to handle the diverse requirements of the Open and Obstacle Challenges. It includes a color sensor, two ultrasonic sensors, a gyro sensor, and a Pixy2 camera. The diagram below illustrates the placement and integration of these components.
 
 <img width="529" height="290" alt="image" src="https://github.com/user-attachments/assets/73058897-d56b-4850-9406-d10a5b7c9c1b" />
@@ -247,7 +201,7 @@ The colour sensor is only used in the Obstacle Challenge to determine when the s
 <img width="349" height="320" alt="image" src="https://github.com/user-attachments/assets/46926e19-91de-4883-96db-04ca36fd4193" />
 
 
-## 2.3 Build of materials
+## 2.3 Build Of Materials (BOM)
 
 The table below shows the Build of Materials (BOM) used to build the self-driving car, making sure each part matches the car’s needs and functions.
 
@@ -277,10 +231,10 @@ The wiring diagram below illustrates the sensors’ power consumption and shows 
 <img width="631" height="963" alt="image" src="https://github.com/user-attachments/assets/32a0784a-7d09-4f24-be46-6c2d7bc2f1d3" />
 
 
-# 3.0 Obstacle management
+# 3.0 Obstacle Management
 In our project, we utilize the Clev3r-Python programming language to operate the robot. The programming structure is divided into two main sections which is the Open Challenge and the Obstacle Challenge. This section includes a flowchart and an overview of the code used for both challenges. 
 
-## 3.1 Open challenge
+## 3.1 Open Challenge
 To complete the open challenge, our robot uses two main sensors which is an EV3 Gyro Sensor and two EV3 Ultrasonic Sensors on both the left and right sides. Since both EV3 Ultrasonic Sensors share the same port, we use a multiplexer to allow the robot to read data from each one separately. The left ultrasonic sensor is connected to Channel 1 of the multiplexer, while the right ultrasonic sensor is connected to Channel 3.
 
 <img width="689" height="422" alt="image" src="https://github.com/user-attachments/assets/3fcfba2a-4495-4989-8a29-32aec5166e51" />
@@ -348,7 +302,7 @@ Then, it loops for 11 times, turning 90° in the chosen direction in every loops
 
 
 
-## 3.2	Obstacle challenge
+## 3.2 Obstacle Challenge
 To complete the Obstacle Challenge, our robot utilizes four sensors which is a Pixy2 Camera, a gyro sensor, two ultrasonic sensors on both the left and right sides and a colour sensor. Since both ultrasonic sensors need to be connected to the same port, we use a multiplexer so that the robot can read data from both of the sensors.
 
 <img width="591" height="374" alt="image" src="https://github.com/user-attachments/assets/f3bdb29f-8d7b-4ede-b0ff-0218912b86cc" />
@@ -503,7 +457,7 @@ The flow diagram below illustrates the detailed process of parking in the magent
 
 
 
-# 4.0 Engineering factor
+# 4.0 Engineering Factors
 This section showcases our custom-designed and third-party open-source parts along with detailed explanations of all the components installed in the car. 
 
 At first, our autonomous self-driving car is primarily built using the LEGO Mindstorms Education EV3 Core Set 45544. However, we faced several challenges while completing both the Open and Obstacle Challenges. For example, our design required more sensor ports than the EV3 brick could provide, the EV3 colour sensor often gave inconsistent readings due to external light interference, and we lacked of suitable camera to accurately scan the pillars and the magenta parking lot. To overcome these challenges and enhance our robot’s performance, we incorporated third-party components into the design. The diagram below illustrates the additional components we used and how they helped overcome these issues.
@@ -530,7 +484,7 @@ We use the Pixy2 Camera because it can quickly and accurately detect objects whi
 
  
 
-# 5.0 Improvements
+# 5.0 Improvement and Enhancement
 In this section, we explain the problems we faced while building our self-driving car and the different methods we used to solve them. By studying each problem carefully, we made changes that improved the car performances. The improvements towards the robot can be categorized into two main parts which is the construction and programming parts.
 
 **5.1	Robot construction**
@@ -606,7 +560,7 @@ To solve this, we added PID steering. This allows the robot to constantly adjust
 
 We extend our sincere appreciation to LEGO Education for their generous support in providing high-quality LEGO EV3 and SPIKE Essential sets, and to Bambu Lab for their advanced 3D printing technology, which contributed significantly to the development of our custom components.
 
-# Appendix 1
+# Appendix 1. The Building Instruction of the Self-Driving Car
 The Building Instruction of the Self-Driving Car
 
 <img width="752" height="1063" alt="image" src="https://github.com/user-attachments/assets/a6396a9b-8600-4aa5-8666-029c77aa1713" />
@@ -775,7 +729,7 @@ The Building Instruction of the Self-Driving Car
 
 
 
-# Appendix 2
+# Appendix 2. Open Challenge Programming
 Open Challenge Programming
 
 <img width="753" height="488" alt="image" src="https://github.com/user-attachments/assets/a101351d-6ca8-42b6-acdd-1b3bbe942da8" />
@@ -790,7 +744,7 @@ Open Challenge Programming
 
 
 
-# Appendix 3
+# Appendix 3. Obstacle Challenge Programming
 Obstacle Challenge Programming
 
 <img width="747" height="441" alt="image" src="https://github.com/user-attachments/assets/67cc5c95-db0f-4359-ad2b-f4883f46e9ac" />
