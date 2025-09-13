@@ -94,7 +94,7 @@ This engineering documentation details comprehensive aspects of the car’s mobi
 
 **other** This folder contains other files which can be used to understand how to prepare the vehicle for the competition.
 
-# X-UniTech Team, Malaysia
+# X-Unitech Team, Malaysia
 Proudly from Malaysia, X-UniTech is a three-member engineering team specializing in the development of autonomous vehicles. Our team is responsible for the end-to-end design, construction, and integration of the vehicle's mechanical and electronic systems to ensure optimal performance. Meet our members:
 
 **Vun Xiu Xuan, Alvin Kong Wei Ee, and Jennissa Aing Anak Jim.**
