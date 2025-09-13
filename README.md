@@ -20,7 +20,11 @@
   - [3.2 Obstacle Challenge](#32-obstacle-challenge)
 
 - [4.0 Engineering Factors](#40-engineering-factors)
+  
 - [5.0 Improvement and Enhancement](#50-improvement-and-enhancement)
+  - [5.1 Robot Construction](#51-robot-construction)
+  - [5.2 Robot Programming](#52-robot-programming)
+
 - [Credits](#credits)
 
 - [Appendix 1. The Building Instruction of the Self-Driving Car](#appendix-1-the-building-instruction-of-the-self-driving-car)
@@ -487,7 +491,8 @@ We use the Pixy2 Camera because it can quickly and accurately detect objects whi
 # 5.0 Improvement and Enhancement
 In this section, we explain the problems we faced while building our self-driving car and the different methods we used to solve them. By studying each problem carefully, we made changes that improved the car performances. The improvements towards the robot can be categorized into two main parts which is the construction and programming parts.
 
-**5.1	Robot construction**
+## 5.1 Robot Construction
+
 We improved the construction of robot from time to time whenever we encountered challenges. Below are some of the improvements we implemented.
 
 **(i)	Replace the front steering wheel with a smaller size wheel**
@@ -514,7 +519,7 @@ Initially, we noticed a delay in the robot’s response when avoiding pillars. H
   <img width="537" height="330" alt="image" src="https://github.com/user-attachments/assets/801dd19f-72ae-482c-9b1c-c17f65e88ca8" />
 
 
-**5.2	Robot programming
+## 5.2 Robot Programming
 
 (i)	Resetting the gyro**
 When we tested our EV3 robot, we noticed the gyro sensor sometimes drifted. This means that even when the robot was not turning, the angle reading slowly changed. At first, we tried fixing it by adding a software reset in our program. The reset switched the sensor into the correct mode, sent a command to set the angle back to zero, and waited until it was ready. This worked most of the time, especially when we reset it just before the robot started moving.
