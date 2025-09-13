@@ -30,7 +30,6 @@
 
 ---
 
-# Introduction
 
 # X-Unitech Team, Malaysia
 
