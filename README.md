@@ -31,7 +31,6 @@
 ---
 
 
-# X-Unitech Team, Malaysia
 
 # Performance video
 
