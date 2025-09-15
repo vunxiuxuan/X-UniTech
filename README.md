@@ -1,4 +1,4 @@
-![WhatsApp Image 2025-09-15 at 13 37 50_e90f9afd](https://github.com/user-attachments/assets/09753cab-f2e9-4688-b57b-d248b4c958ad)# Content (GitHub)
+# Content (GitHub)
 **schemes** This folder contains one or several schematic diagrams in the form of JPEG, PNG, or PDF of the electromechanical components illustrating all the elements (electronic components and motors) used in the vehicle and how they connect.
 
 **src** This folder contains all the programming flowcharts and all programming used to participate in the WRO 2024 Future Engineers Category.
