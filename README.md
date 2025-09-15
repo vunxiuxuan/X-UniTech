@@ -332,7 +332,8 @@ Appendix 3 contains the complete programming code for the Obstacle Challenge.
 
 Below is a brief explanation of the key parts of the code used to control the robot during the challenge.
 
-**1. Initialization and Set Up**
+1. Initialization and Set Up
+
 This part is aim to set up the Pixy2 Camera and multiplexer before running. The setLampOn and setLampOff function turns the lamp of the sensor on and off while the getSignature function allow the Pixy2Camera to read the position of the green and red pillars through their XY coordinate shown in the Pixy Mon V2 apps. The setMultiplexerMode function allows the EV3 to connect with both ultrasonic sensors in the same port while the getMultiplexerValues function allows the robot to read the distance values from the left and right ultrasonic sensors. 
 
 <img width="657" height="467" alt="image" src="https://github.com/user-attachments/assets/d7dcc817-cb47-48ba-a820-a88ecad721c6" />
@@ -484,18 +485,21 @@ At first, our autonomous self-driving car is primarily built using the LEGO Mind
 
 
 **(i)	EV3 Sensor Multiplexer**
+
 We added an EV3 Sensor Multiplexer so our robot can use five sensors at once. There are two ultrasonic sensors connected to the multiplexer with different channel. With all five working together, the robot can move more accurately and handle Obstacles Challenge better.
 
  <img width="452" height="399" alt="image" src="https://github.com/user-attachments/assets/25a36773-e2e2-49db-8721-d477429ee0c6" />
 
 
 **(ii)	3D Printed Casing**
+
 We created a 3D-printed casing for the colour sensor. This casing blocks external light so the sensor can detect colours more accurately, and it also protects the sensor from damage if the robot bumps into something.
 
  <img width="432" height="376" alt="image" src="https://github.com/user-attachments/assets/17622bb3-134b-4bc3-bfbe-68c1cf888b0e" />
 
 
 **(iii)	Pixy2 Camera**
+
 We use the Pixy2 Camera because it can quickly and accurately detect objects while the robot is moving. In our design, the Pixy2 Camera is mainly used to scan and track the magenta parking lot, green and red pillars, which helps the robot recognize them in time and make the right navigation decisions during the Open and Obstacle Challenges.
  
  <img width="726" height="269" alt="image" src="https://github.com/user-attachments/assets/a3d5ce84-2d24-4226-84c9-ef4a4b7145a9" />
@@ -510,24 +514,28 @@ In this section, we explain the problems we faced while building our self-drivin
 We improved the construction of robot from time to time whenever we encountered challenges. Below are some of the improvements we implemented.
 
 **(i)	Replace the front steering wheel with a smaller size wheel**
+
 Initially, we are using the LEGO tyre 44771 for the front wheel but then we switched to the smaller tyre from Spike Essential Set which is known as the Medium Azure Hard Rubber Tyre. The reduced size improved the car’s maneuverability, making it easier to turn and park in tight spaces. Moreover, the steering’s sensitivity is better when avoiding pillars.
 
  <img width="655" height="304" alt="image" src="https://github.com/user-attachments/assets/de505ec5-620f-438d-b50e-4d97254ae388" />
 
 
 **(ii)	Adding a 3D-Printed Casing to the EV3 Colour Sensor**
+
 Our EV3 colour sensor failed to detect the orange and blue lights for several times. Since this scanning process is crucial for determining the robot’s direction, we designed and 3D-printed a custom casing for the sensor. The casing’s main purpose is to block external light that could interfere with colours detection, while also protecting the sensor from impacts or collisions.
 
  <img width="606" height="330" alt="image" src="https://github.com/user-attachments/assets/d71c9c71-768d-4a91-8ff2-f8a0b89fe26b" />
 
  
 **(iii)	Implementing a multiplexer to solve the limited EV3 ports issue**
+
 We also encountered an issue with the limited number of EV3 ports. During the Obstacle Challenge, multiple sensors were required at the same time, which quickly used up all available ports. To overcome this, we used a multiplexer, which allowed us to expand the number of connections. Both ultrasonic sensors were connected to the multiplexer, freeing up the built-in EV3 ports for other essential sensors.
 
   <img width="566" height="326" alt="image" src="https://github.com/user-attachments/assets/1924f1de-b4d6-4460-a012-11216d9fdad0" />
 
 
 **(iv)	Pixy2 Camera Position Adjustment**
+
 Initially, we noticed a delay in the robot’s response when avoiding pillars. Hence, we adjusted the Pixy2 camera position by moving it slightly backward. This allowed the camera to detect pillars earlier, giving the steering system more time to make corrections and preventing collisions towards the pillars during Obstacle Challenge.
 
   <img width="537" height="330" alt="image" src="https://github.com/user-attachments/assets/801dd19f-72ae-482c-9b1c-c17f65e88ca8" />
@@ -536,6 +544,7 @@ Initially, we noticed a delay in the robot’s response when avoiding pillars. H
 ## 5.2 Robot Programming
 
 (i)	Resetting the gyro**
+
 When we tested our EV3 robot, we noticed the gyro sensor sometimes drifted. This means that even when the robot was not turning, the angle reading slowly changed. At first, we tried fixing it by adding a software reset in our program. The reset switched the sensor into the correct mode, sent a command to set the angle back to zero, and waited until it was ready. This worked most of the time, especially when we reset it just before the robot started moving.
 
  <img width="514" height="189" alt="image" src="https://github.com/user-attachments/assets/235d36bd-3539-4e3b-931a-b0b878f1845d" />
@@ -547,12 +556,14 @@ However, we found that the gyro could still drift during the run, even after the
 
   
 **(ii)	Ensuring continuous operation of ultrasonic sensor**
+
 The ultrasonic sensor has an issue where it may turn off unexpectedly during operation without any warning. To address this, we've developed a program that automatically sets the robot's motor speed to zero whenever the ultrasonic sensor detects a value of zero. This precaution effectively stops the robot's movement until the sensor resumes normal operation, reducing any risks associated with the sensor failure. Once the ultrasonic sensor begins detecting values again, the robot will return to its normal speed, ensuring smooth and uninterrupted movement.
 
   <img width="620" height="107" alt="image" src="https://github.com/user-attachments/assets/0ca2b448-e0a5-49a1-86ef-04b96e014df0" />
 
 
 **(iii)	Adding signal light to EV3 Brick**
+
 At first, we didn’t connect the Pixy camera with the EV3 brick’s LED light. This made it harder to know when the robot had spotted a pillar. During testing, we had to guess whether the robot was reacting at the right time.
 To make this easier for competition, we set the LED to change colour when the robot sees a pillar. By looking at the LED and the robot’s position on the map, we can quickly tell if it is reacting too early or too late. We also thought about adding sound alerts, but in a crowded and noisy place, it would be hard to hear them. That’s why using lights is a better choice to overcome the problems.
 
@@ -562,6 +573,7 @@ To make this easier for competition, we set the LED to change colour when the ro
 
  
 **(iv)	PID Steering**
+
 Before this, we didn’t use PID steering in our robot’s program. From our observation, the steering corrections were not precise. The robot sometimes drifted off track or turned too much, which made it slower and less accurate.
 To solve this, we added PID steering. This allows the robot to constantly adjust its steering to follow the target path more accurately. After adding PID, the robot turns smoothly and stays on track much better. This greatly improved our performance in both of the challenges. The video in the QR code clearly shows the difference when PID steering is applied.
 
