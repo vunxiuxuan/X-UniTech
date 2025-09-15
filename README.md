@@ -1,9 +1,11 @@
-# Content (GitHub)
+![WhatsApp Image 2025-09-15 at 13 37 50_e90f9afd](https://github.com/user-attachments/assets/09753cab-f2e9-4688-b57b-d248b4c958ad)# Content (GitHub)
 **schemes** This folder contains one or several schematic diagrams in the form of JPEG, PNG, or PDF of the electromechanical components illustrating all the elements (electronic components and motors) used in the vehicle and how they connect.
 
 **src** This folder contains all the programming flowcharts and all programming used to participate in the WRO 2024 Future Engineers Category.
 
-**pictures-team & vehicle** This folder contains photos of the team participating in the WRO, photos of the vehicle (from all sides and bottom views) and photo shown in documentation.
+**t-photos** This folder contains photos of the team participating in the WRO
+
+**v-photos** This folder contains photos of the vehicle from all sides (top view, bottom view, front view, back view and side views)
 
 **video** This folder contains video.md file that demonstrates how the robot functions to solve both tasks.
 
