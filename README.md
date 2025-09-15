@@ -13,7 +13,7 @@
 
 # Table of Contents (Essay)
 - [Introduction](#introduction)
-- [X-Unitech Team, Malaysia](#x-unitech-team-malaysia)
+- [X-UniTech Team, Malaysia](#x-unitech-team-malaysia)
 - [Performance video](#performance-video)
 
 - [1.0 Mobility Management](#10-mobility-management)
@@ -51,7 +51,7 @@
 This engineering documentation details comprehensive aspects of the car’s mobility management, power and sensor systems, obstacle detection and avoidance, construction design, integration of third-party sensors, and the improvements that were made throughout our preparation for the World Robot Olympiad (WRO) Open Championship in Manila, Philippines 2025 under the Future Engineers Category.
 
 
-# X-Unitech Team, Malaysia
+# X-UniTech Team, Malaysia
 Proudly from Malaysia, X-UniTech is a three-member engineering team specializing in the development of autonomous vehicles. Our team is responsible for the end-to-end design, construction, and integration of the vehicle's mechanical and electronic systems to ensure optimal performance. Meet our members:
 
 **Vun Xiu Xuan, Alvin Kong Wei Ee, and Jennissa Aing Anak Jim.**
