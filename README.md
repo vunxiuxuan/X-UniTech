@@ -268,24 +268,28 @@ Appendix 2 contains the complete programming code for the Open Challenge.
 
 Below is a brief explanation of the key parts of the code used to control the robot during the challenge.
 1.	Initialization and Setup
+
 This part is aim to set up the sensors and multiplexer before running. The setMultiplexerMode function allows the EV3 to connect with both ultrasonic sensors in the same port while the getMultiplexerValues function allows the robot to read the distance values from the left and right ultrasonic sensors. Additionally, the ReadSensor continuously updates the robot’s heading and wall distances in real time.
 
 <img width="603" height="427" alt="image" src="https://github.com/user-attachments/assets/7b830802-533e-4529-9f94-ff1041fb096f" />
 
 
 2.	Reset Steering
+
 Reset Steering make sure the steering motor starts at a fixed desired position before driving. The robot turns the steering motor all the way to the left for 300 milliseconds by using the medium motor in the port A. Hence, it waits until the motor completely stops moving, which means it has hit the limit. A short pause is added to let the medium motor. After that, the motor’s rotation counter is reset to zero. This step is important because it tells the robot exactly where the “straight ahead” position is.
 
 <img width="397" height="222" alt="image" src="https://github.com/user-attachments/assets/cba77815-5420-4b5b-a06f-f2e01a617227" />
 
 
 3.	PID Steering Control
+
 The PID Steering function helps the robot to adjust the steering motor whenever it starts to drift off from the target. The P part fixes most of the error right away, the I part makes small adjustments over time and the D part make sure that the correction is done smoothly. These three adjustments are added together to get one correction value, which is sent to motor A to turn the steering. This keeps the robot moving smoothly, avoiding zig-zagging, and makes its turns more accurate.
 
 <img width="641" height="316" alt="image" src="https://github.com/user-attachments/assets/63c8691d-fe5d-4f1f-91b2-e9cd30a4f4d4" />
 
 
 4.	Drive
+
 The Drive function moves the robot forward and keeps it aligned when following a wall. If no wall is detected on either side, the drive motor stops; otherwise, it runs at the set speed. When wall-following mode is on, the robot adjusts its steering based on the distance to the wall. It then combines this adjustment with its current heading to get a target steering angle, which is sent to the PID Steering function for smooth and accurate control.
 
 <img width="558" height="484" alt="image" src="https://github.com/user-attachments/assets/3cb43713-634a-4a8d-9f56-3ee1d3a7217d" />
@@ -297,6 +301,7 @@ The DriveDegrees function moves the robot forward in rotation degrees. He robot 
 
 
 5.	Main program
+
 This program resets timers and steering, then drives forward until it detects a wall on either side. It determines whether to follow the right or left wall based on sensor readings.
 
 <img width="362" height="274" alt="image" src="https://github.com/user-attachments/assets/bd077349-e435-4c7a-9b6d-c099fcd3c8b6" />
@@ -370,6 +375,7 @@ The PID Steering function helps the robot to adjust the steering motor whenever 
 The Drive function combined four main parts which including the TrackWall, TrackPillar and PID Steering. In sum, these values help the robot constantly adjust its steering and make sure the robot move smoothly and accurately.
 
 (i)	TrackWall
+
 The robot checks its distances from the walls within the range of 150mm. If it’s too close to one of the sides, it will steer away. Plus, the robot will check which wall is closer by comparing the distance values from both sides. If the left wall is closer, the robot will adjust its steering to follow the left side. If the right wall is closer, it will follow the right side instead, but with a negative steering value to turn in the opposite direction.
 
 <img width="584" height="178" alt="image" src="https://github.com/user-attachments/assets/f8e58afc-3a22-44ea-8904-75c210ce57fc" />
@@ -381,6 +387,7 @@ If neither wall is detected within the set range, the robot will not make any wa
 
 
 (ii)	TrackPillar
+
 This part help to calculate how far each pillar from the Pixy2 Camera’s view. It uses the Pythagorean theorem to figure out the straight-line distance based on the difference in horizontal (x) and vertical (y) positions.
 
 <img width="703" height="90" alt="image" src="https://github.com/user-attachments/assets/fda0a321-517e-4aa5-9ce0-6e94fee56760" />
@@ -398,6 +405,7 @@ When no pillar is nearby, the robot turns off its LED light and uses the ultraso
 
 
 (iii)	Steering Error
+
 The robot’s steering correction is based on a combination of pillar tracking and wall tracking. The robot then applies this correction to the PID steering motor. At the same time, it powers the drive motor which is the Motor D to move forward at runSpeed.
 
 <img width="454" height="174" alt="image" src="https://github.com/user-attachments/assets/4541138c-3db7-442a-9633-ddce41c11418" />
@@ -406,12 +414,14 @@ The robot’s steering correction is based on a combination of pillar tracking a
 5.	Others movement block
 
 (i)	WaitDegrees
+
 WaitDegrees function makes the robot to move a certain distance based on the rotation of its drive motor (Motor D). The stop=1 means the robot will stops the motor and waits for a 50ms after finishing the movement.
 
  <img width="619" height="183" alt="image" src="https://github.com/user-attachments/assets/29aa7530-1e78-427e-b758-18da4510f063" />
 
 
 (ii)	SteeringDrive
+
 The SteeringDrive function makes the robot move forward a certain distance while controlling the steering. Therefore, it will combine the current steering motor position with any additional steering adjustment during both of the challenge rounds. 
 
  <img width="653" height="257" alt="image" src="https://github.com/user-attachments/assets/de204873-25f9-4150-b020-8e5a967def56" />
