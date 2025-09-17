@@ -162,7 +162,8 @@ The building instruction for the self-driving car and the video of showcasing th
 
 Building Instruction of Self-Driving Car (PDF format)
 
-<img width="199" height="206" alt="image" src="https://github.com/user-attachments/assets/f25afabb-8c35-4adc-92a0-4cec379ad04f" />
+<img width="251" height="259" alt="image" src="https://github.com/user-attachments/assets/7f55a618-ff68-4ab1-8269-1cc669acb97f" />
+
 
 3D Printing Process Video
 
